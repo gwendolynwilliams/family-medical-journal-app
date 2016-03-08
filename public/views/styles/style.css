@@ -1,0 +1,40 @@
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+h3 {
+    text-align: left;
+}
+
+/* Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.menu {
+    padding-bottom: 80px;
+}
+
+.menu ul {
+    list-style:none;
+}
+
+.menu ul li {
+    display: inline;
+    /*float: left;*/
+}
+
+.menu ul li a {
+    padding: 30px;
+    text-decoration: none;
+    color: #402e16;
+}
+
+.menu ul li a:hover {
+    color: cadetblue;
+}
+
+.menu ul li a:active {
+    color: cadetblue;
+}
