@@ -1,0 +1,117 @@
+CREATE TABLE users
+(
+user_id SERIAL PRIMARY KEY,
+first_name varchar(255) NOT NULL,
+last_name varchar(255) NOT NULL,
+password varchar(255)
+);
+
+
+CREATE TABLE family_members
+(
+family_member_id SERIAL PRIMARY KEY,
+user_id INTEGER,
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE family_members
+ADD FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+;
+
+
+CREATE TABLE medications
+(
+medication_id SERIAL PRIMARY KEY,
+medication_name VARCHAR(255) NOT NULL,
+family_member_id INTEGER,
+dosage VARCHAR(100) NOT NULL,
+frequency VARCHAR(100) NOT NULL,
+date_started DATE,
+date_stopped DATE,
+physician VARCHAR(100),
+reason VARCHAR(255),
+notes VARCHAR(255)
+);
+
+ALTER TABLE medications
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+;
+
+CREATE TABLE immunizations
+(
+immunization_id SERIAL PRIMARY KEY,
+immunization_name VARCHAR(255) NOT NULL,
+family_member_id INTEGER,
+date_administered DATE,
+notes VARCHAR(255)
+);
+
+ALTER TABLE immunizations
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+;
+
+
+CREATE TABLE statistics
+(
+statistic_id SERIAL PRIMARY KEY,
+family_member_id INTEGER,
+feet INTEGER,
+inches INTEGER,
+weight VARCHAR(100),
+date_of_birth DATE,
+physician VARCHAR(100),
+physician_phone VARCHAR(20),
+physician_street_1 VARCHAR(100),
+physician_street_2 VARCHAR(100),
+physician_city VARCHAR(100),
+physician_state VARCHAR(50),
+physician_zip VARCHAR(50),
+blood_type VARCHAR(2),
+med_allergies VARCHAR(255),
+notes VARCHAR(255)
+
+);
+
+ALTER TABLE statistics
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+;
+
+
+CREATE TABLE symptoms
+(
+symptom_id SERIAL PRIMARY KEY,
+family_member_id INTEGER,
+symptom_name VARCHAR(255) NOT NULL,
+symptom_date DATE,
+treatment VARCHAR(255),
+notes VARCHAR(255)
+);
+
+ALTER TABLE symptoms
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+;
+
+
+CREATE TABLE visits
+(
+visit_id SERIAL PRIMARY KEY,
+family_member_id INTEGER,
+visit_type VARCHAR(255) NOT NULL,
+location VARCHAR(255) NOT NULL,
+reason VARCHAR(255) NOT NULL,
+visit_date DATE NOT NULL,
+discharge_date DATE,
+treatment VARCHAR(255),
+notes VARCHAR(255)
+);
+
+ALTER TABLE visits
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+;

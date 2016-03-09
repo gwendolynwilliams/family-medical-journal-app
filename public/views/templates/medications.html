@@ -1,1 +1,32 @@
-<h3>Medications</h3>
+<div class="row">
+    <div class="offset-by-three six columns">
+
+        <h4 class="u-full-width">Add Medication</h4>
+
+        <form>
+            <label for="medication_name">Medication: </label>
+            <input class="u-full-width" type="text" ng-model="medication_name" id="medication_name" />
+
+            <label for="dosage">Dosage: </label>
+            <input class="u-full-width" type="text" ng-model="dosage" id="dosage" />
+
+            <label for="frequency">Frequency: </label>
+            <input class="u-full-width" type="text" ng-model="frequency" id="frequency" />
+
+            <label for="date_started">Date Started Medication: </label>
+            <input type="date" ng-model="date_started" id="date_started" />
+
+            <label for="physician">Prescribing Physician: </label>
+            <input class="u-full-width" type="text" ng-model="physician" id="physician" />
+
+            <label for="reason">Reason for Medication: </label>
+            <input class="u-full-width" type="text" ng-model="reason" id="reason" />
+
+            <label for="notes">Notes: </label>
+            <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
+
+            <p><a href="#medicationsList"><button ng-click="">Add Medication</button></a></p>
+            <p ng-show="added">{{medication_name}} Added!</p>
+        </form>
+    </div>
+</div>

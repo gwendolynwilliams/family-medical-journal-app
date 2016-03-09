@@ -1,2 +1,17 @@
-<h3>Add Family Member</h3>
+<div class="row">
+    <div class="offset-by-three six columns">
 
+        <h4>Add Family Member</h4>
+
+        <form>
+            <label for="first_name">First Name: </label>
+            <input class="u-full-width" type="text" ng-model="first_name" id="first_name" />
+
+            <label for="last_name">Last Name: </label>
+            <input class="u-full-width" type="text" ng-model="last_name" id="last_name" />
+
+            <p><button ng-click="">Add Family Member</button></p>
+            <p ng-show="added">{{first_name}} Added!</p>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,59 @@
-<h3>Statistics</h3>
+<div class="row">
+    <div class="offset-by-three six columns">
+
+        <h4 class="u-full-width">Add Statistic</h4>
+
+        <form>
+
+            <label for="feet">Height (feet): </label>
+            <input type="text" ng-model="feet" id="feet" />
+
+            <label for="inches">Height (inches): </label>
+            <input type="text" ng-model="inches" id="inches" />
+
+            <label for="weight">Weight (lbs): </label>
+            <input type="text" ng-model="weight" id="weight" />
+
+            <label for="date_of_birth">Date of Birth: </label>
+            <input type="date" ng-model="date_of_birth" id="date_of_birth" />
+
+            <label for="physician">Primary Physician: </label>
+            <input type="text" class="u-full-width" ng-model="physician" id="physician" />
+
+            <label for="physician_phone">Physician Phone Number: </label>
+            <input type="text" ng-model="physician_phone" id="physician_phone" />
+
+            <label for="physician_street_1">Physician Street Address 1: </label>
+            <input class="u-full-width" type="text" ng-model="physician_street_1" id="physician_street_1" />
+
+            <label for="physician_street_2">Physician Street Address 2: </label>
+            <input class="u-full-width" type="text" ng-model="physician_street_2" id="physician_street_2" />
+
+            <label for="physician_city">Physician City: </label>
+            <input type="text" ng-model="physician_city" id="physician_city" />
+
+            <label for="physician_state">Physician State: </label>
+            <input type="text" ng-model="physician_state" id="physician_state" />
+
+            <label for="physician_zip">Physician Zip: </label>
+            <input type="text" ng-model="physician_zip" id="physician_zip" />
+
+            <label for="blood_type">Blood Type:</label>
+            <select id="blood_type">
+                <option value="A">A</option>
+                <option value="A">B</option>
+                <option value="A">AB</option>
+                <option value="A">O</option>
+            </select>
+
+            <label for="med_allergies">Medication Allergies:</label>
+            <input class="u-full-width" type="text" ng-model="med_allergies" id="med_allergies" />
+
+            <label for="notes">Notes: </label>
+            <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
+
+            <p><a href="#statisticsList"><button ng-click="">Add Statistic</button></a></p>
+            <p ng-show="added">Added!</p>
+        </form>
+    </div>
+</div>

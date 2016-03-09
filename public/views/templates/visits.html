@@ -1,1 +1,37 @@
-<h3>Visits</h3>
+<div class="row">
+    <div class="offset-by-three six columns">
+
+        <h4 class="u-full-width">Add Doctor's Visit, Urgent Care, or Hospital Visit</h4>
+
+        <form>
+            <label for="medication_name">Type of Visit: </label>
+            <select id="medication_name">
+                <option value="Primary Care Physician">Primary Care Physician</option>
+                <option value="Specialist">Specialist</option>
+                <option value="Urgent Care">Urgent Care</option>
+                <option value="Hospital">Hospital</option>
+                <option value="Therapist">Therapist</option>
+                <option value="Psychiatrist">Psychiatrist</option>
+
+            </select>
+
+            <label for="reason">Reason for Visit: </label>
+            <input class="u-full-width" type="text" ng-model="reason" id="reason" />
+
+            <label for="visit_date">Visit Date: </label>
+            <input type="date" ng-model="visit_date" id="visit_date" />
+
+            <label for="discharge_date">Discharge Date: </label>
+            <input type="date" ng-model="discharge_date" id="discharge_date" />
+
+            <label for="treatment">Treatment:</label>
+            <input class="u-full-width" type="text" ng-model="treatment" id="treatment" />
+
+            <label for="notes">Notes: </label>
+            <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
+
+            <p><a href="#visitsList"><button ng-click="">Add Visit</button></a></p>
+            <p ng-show="added">Visit Added!</p>
+        </form>
+    </div>
+</div>
