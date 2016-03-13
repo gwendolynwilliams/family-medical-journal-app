@@ -1,22 +1,46 @@
-myApp.controller('StatisticsController', ['$scope', function($scope) {
+myApp.controller('StatisticsController', ['$scope', '$http', function($scope, $http) {
 
-    $scope.statistics = [];
+    $scope.statistic = false;
 
-    console.log('Statistics Controller');
+    $scope.postStatistic = function() {
+        $http({
+            method: 'POST',
+            url: '/statistic',
+            data: {
+                feet: $scope.feet,
+                inches: $scope.inches,
+                weight: $scope.weight,
+                date_of_birth: $scope.date_of_birth,
+                physician: $scope.physician,
+                physician_phone: $scope.physician_phone,
+                physician_street_1: $scope.physician_street_1,
+                physician_street_2: $scope.physician_street_2,
+                physician_city: $scope.physician_city,
+                physician_state: $scope.physician_state,
+                physician_zip: $scope.physician_zip,
+                blood_type: $scope.blood_type,
+                med_allergies: $scope.med_allergies,
+                notes: $scope.notes
+            }
+        }).then(function(response) {
+            console.log(response.config.data);
+            $scope.statistic = true;
 
-    //$scope.dataFactory.retrieveData().then(function() {
-    //    $scope.favorites = $scope.dataFactory.faveData();
-    //});
-    //
-    //$scope.deleteFavorite = function(id) {
-    //    $scope.deleted = true;
-    //
-    //    $scope.dataFactory.deleteFromDatabase(id).then(function() {
-    //        $scope.dataFactory.retrieveData().then(function() {
-    //            $scope.favorites = $scope.dataFactory.faveData();
-    //        });
-    //    })
-    //    
-    //};
+            $scope.feet = '';
+            $scope.inches = '';
+            $scope.weight = '';
+            $scope.date_of_birth = '';
+            $scope.physician = '';
+            $scope.physician_phone = '';
+            $scope.physician_street_1 = '';
+            $scope.physician_street_2 = '';
+            $scope.physician_city = '';
+            $scope.physician_state = '';
+            $scope.physician_zip = '';
+            $scope.blood_type = '';
+            $scope.med_allergies = '';
+            $scope.notes = '';
+        });
+    };
 
 }]);

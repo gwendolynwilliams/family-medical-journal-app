@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/successController.js"></script>
+    <link rel="stylesheet" href="/views/styles/skeleton.css" />
+    <link rel="stylesheet" href="/views/styles/style.css" />
+</head>
+<body ng-app="myApp">
+
+<div class="container" ng-controller="SuccessController">
+
+    <div ng-include="'/views/templates/nav.html'"></div>
+
+    <p>Welcome, {{userName}}!</p>
+    <!--<p>Successfully Registered! </p>-->
+    <a href="http://localhost:5000/">Go to Home Page</a>
+
+    <main ng-view></main>
+
+</div>
+
+</body>
+</html>

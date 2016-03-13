@@ -3,7 +3,7 @@
 
         <h4>Log In</h4>
 
-        <form>
+        <form action="/login" method="post">
             <label for="username">username: </label>
             <input class="u-full-width" type="text" ng-model="username" id="username" />
 
@@ -12,5 +12,8 @@
 
             <p><button ng-click="">Log In</button></p>
         </form>
+
+        <!--<a href="#" ng-click="signOut()">Sign out</a>-->
+
     </div>
 </div>

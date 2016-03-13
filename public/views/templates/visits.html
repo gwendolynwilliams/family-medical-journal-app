@@ -4,16 +4,18 @@
         <h4 class="u-full-width">Add Doctor's Visit, Urgent Care, or Hospital Visit</h4>
 
         <form>
-            <label for="medication_name">Type of Visit: </label>
-            <select id="medication_name">
+            <label for="visit_type">Type of Visit: </label>
+            <select id="visit_type" ng-model="visit_type">
                 <option value="Primary Care Physician">Primary Care Physician</option>
                 <option value="Specialist">Specialist</option>
                 <option value="Urgent Care">Urgent Care</option>
                 <option value="Hospital">Hospital</option>
                 <option value="Therapist">Therapist</option>
                 <option value="Psychiatrist">Psychiatrist</option>
-
             </select>
+
+            <label for="location">Visit Location: </label>
+            <input class="u-full-width" type="text" ng-model="location" id="location" />
 
             <label for="reason">Reason for Visit: </label>
             <input class="u-full-width" type="text" ng-model="reason" id="reason" />
@@ -30,8 +32,8 @@
             <label for="notes">Notes: </label>
             <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
 
-            <p><a href="#visitsList"><button ng-click="">Add Visit</button></a></p>
-            <p ng-show="added">Visit Added!</p>
+            <p><button ng-click="postVisit()">Add Visit</button></p>
+            <p ng-show="visit">{{location}} visit added!</p>
         </form>
     </div>
 </div>

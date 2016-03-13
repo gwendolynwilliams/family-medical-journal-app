@@ -1,58 +1,49 @@
 myApp.factory('DataFactory', ['$http', function($http) {
 
     // PRIVATE
-    var animals = undefined;
+    var user = undefined;
+    var familyMember = undefined;
 
-    var getData = function() {
-        var promise = $http.get('/data').then(function(response) {
-            animals = response.data;
-            return animals;
+    var getUser = function() {
+        var promise = $http.get('/user').then(function(response) {
+            user = response.data;
+            return user;
+        });
+        //console.log('promise: ', promise);
+        return promise;
+
+    };
+
+    var getFamilyMember = function() {
+        var promise = $http.get('/familyMember').then(function(response) {
+            familyMember = response.data;
+            return familyMember;
         });
         return promise;
     };
-
-    var deleteFave = function(id) {
-        var promise = $http.delete('/data/' + id).then(function(response) {
-            animals = response.data;
-            return animals;
-        });
-        return promise;
-    };
-
-
-    function postFave(animals) {
-        console.log('postFave animals id: ', animals.animalId);
-        var promise =
-            $http({
-                method: 'POST',
-                url: '/data',
-                data: {
-                    id: animals.animalId,
-                    name: animals.animalName,
-                    description: animals.animalDesc,
-                    image: animals.animalImage
-                }
-            }).then(function(response) {
-                console.log(response.data);
-            });
-        return promise;
-    }
 
     //PUBLIC
     var publicApi = {
-        faveData: function() {
-            return animals;
+        factoryRetrieveUser: function() {
+            return getUser();
         },
-        retrieveData: function() {
-            return getData();
+        factoryShowUser: function() {
+            console.log('user: ', user);
+            return user;
         },
-        postToDatabase: function(animals) {
-            return postFave(animals);
-            //return postFave;
+        factoryRetrieveFamilyMember: function() {
+            return getFamilyMember();
         },
-        deleteFromDatabase: function(id) {
-            return deleteFave(id);
+        factoryShowFamilyMember: function() {
+            return familyMember;
         }
+        //postToDatabase: function(animals) {
+        //    return postFave(animals);
+        //    //return postFave;
+        //},
+        //deleteFromDatabase: function(id) {
+        //    return deleteFave(id);
+        //}
     };
 
     return publicApi;

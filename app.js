@@ -1,12 +1,38 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-//var dataRoute = require('./routes/data');
+var dataRoute = require('./routes/data');
+
+// Strategy
+var passport = require('./strategies/user.js');
+var session = require('express-session');
+
+// Route includes
+var register = require('./routes/register');
+var login = require('./routes/login');
+var user = require('./routes/user');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-//app.use('/', dataRoute);
+// Passport Session Configuration //
+app.use(session({
+    secret: 'secret',
+    key: 'user',
+    resave: 'true',
+    saveUninitialized: false,
+    cookie: {maxage: 60000, secure: false}
+}));
+
+// start up passport sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use('/register', register);
+app.use('/login', login);
+app.use('/user', user);
+app.use('/', dataRoute);
 
 // Serve back static files
 app.use(express.static('public'));

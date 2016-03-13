@@ -2,9 +2,10 @@
     <div class="offset-by-three six columns">
 
         <h3>Home</h3>
-        <p><a href="#familyMember">Family Member #1</a></p>
-        <p><a href="#familyMember">Family Member #2</a></p>
-        <p><a href="#familyMember">Family Member #3</a></p>
+
+        <div ng-repeat="familyMember in familyMembers" ng-model="factoryRetrieveFamilyMember">
+            <p><a href="#">{{familyMember.first_name}}</a></p>
+        </div>
         <a class="button" href="#addFamily">Add Family Member</a>
             <!--<button ng-click="">Add Family Member</button>-->
 

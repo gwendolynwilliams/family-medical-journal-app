@@ -1,21 +1,24 @@
-myApp.controller('MedicationsController', ['$scope', function($scope) {
+myApp.controller('MedicationsController', ['$scope', '$http' ,function($scope, $http) {
 
     $scope.medications = [];
-    console.log('Medications Controller');
 
-    //$scope.dataFactory.retrieveData().then(function() {
-    //    $scope.favorites = $scope.dataFactory.faveData();
-    //});
-    //
-    //$scope.deleteFavorite = function(id) {
-    //    $scope.deleted = true;
-    //
-    //    $scope.dataFactory.deleteFromDatabase(id).then(function() {
-    //        $scope.dataFactory.retrieveData().then(function() {
-    //            $scope.favorites = $scope.dataFactory.faveData();
-    //        });
-    //    })
-    //
-    //};
+    $scope.postMedication = function() {
+        $http({
+            method: 'POST',
+            url: '/medication',
+            data: {
+                medication_name: $scope.medication_name,
+                dosage: $scope.dosage,
+                frequency: $scope.frequency,
+                date_started: $scope.date_started,
+                date_stopped: $scope.date_stopped,
+                physician: $scope.physician,
+                reason: $scope.reason,
+                notes: $scope.notes
+            }
+        }).then(function(response) {
+            console.log(response.data);
+        });
+    };
 
 }]);

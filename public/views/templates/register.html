@@ -3,21 +3,21 @@
 
         <h4>Register</h4>
 
-        <form>
+        <form action="/register" method="post">
             <label for="username">username: </label>
-            <input class="u-full-width" type="text" ng-model="username" id="username" />
+            <input class="u-full-width" type="text" name="username" id="username" />
 
             <label for="password">password: </label>
-            <input class="u-full-width" type="text" ng-model="password" id="password" />
+            <input class="u-full-width" type="password" name="password" id="password" />
 
             <label for="first_name">First Name: </label>
-            <input class="u-full-width" type="text" ng-model="first_name" id="first_name" />
+            <input class="u-full-width" type="text" name="first_name" id="first_name" />
 
             <label for="last_name">Last Name: </label>
-            <input class="u-full-width" type="text" ng-model="last_name" id="last_name" />
+            <input class="u-full-width" type="text" name="last_name" id="last_name" />
 
-            <p><button ng-click="">Register</button></p>
-            <p ng-show="added">You are now registered!</p>
+            <input type="submit" value="Register" />
+            <p ng-show="userLoggedIn">Welcome {{user}}! You are now registered!</p>
         </form>
     </div>
 </div>

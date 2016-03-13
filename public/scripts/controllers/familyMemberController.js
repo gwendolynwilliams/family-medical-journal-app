@@ -1,12 +1,12 @@
-myApp.controller('FamilyMemberController', ['$scope', function($scope) {
+myApp.controller('FamilyMemberController', ['$scope', 'DataFactory', function($scope, DataFactory) {
 
-    $scope.visits = [];
+    $scope.dataFactory = DataFactory;
     console.log('Family Member Controller');
 
-    //$scope.dataFactory.retrieveData().then(function() {
-    //    $scope.favorites = $scope.dataFactory.faveData();
+    //$scope.dataFactory.factoryRetrieveFamilyMember().then(function() {
+    //    $scope.familyMember = $scope.dataFactory.factoryShowFamilyMember();
     //});
-    //
+
     //$scope.deleteFavorite = function(id) {
     //    $scope.deleted = true;
     //

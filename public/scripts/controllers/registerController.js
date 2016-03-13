@@ -1,21 +1,7 @@
-myApp.controller('RegisterController', ['$scope', function($scope) {
+myApp.controller('RegisterController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
-    $scope.visits = [];
-    console.log('Register Controller');
+    console.log('register controller');
 
-    //$scope.dataFactory.retrieveData().then(function() {
-    //    $scope.favorites = $scope.dataFactory.faveData();
-    //});
-    //
-    //$scope.deleteFavorite = function(id) {
-    //    $scope.deleted = true;
-    //
-    //    $scope.dataFactory.deleteFromDatabase(id).then(function() {
-    //        $scope.dataFactory.retrieveData().then(function() {
-    //            $scope.favorites = $scope.dataFactory.faveData();
-    //        });
-    //    })
-    //    
-    //};
+
 
 }]);
