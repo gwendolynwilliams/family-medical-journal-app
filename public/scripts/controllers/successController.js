@@ -1,26 +1,36 @@
 myApp.controller('SuccessController', ['$scope', '$http', '$window', 'DataFactory', function($scope, $http, $window, DataFactory) {
 
-    console.log('success controller');
     $scope.dataFactory = DataFactory;
     $scope.familyMember = false;
+    $scope.familyMembers = [];
     $scope.first_name = '';
     $scope.last_name = '';
     var user_id = '';
 
     $scope.dataFactory.factoryRetrieveUser().then(function() {
+        //console.log('success controller factoryRetrieveUser coming back');
         $scope.user = $scope.dataFactory.factoryShowUser();
-
         user_id = $scope.user.user_id;
-        console.log('user ID: ', user_id);
+
+        //moving this up from below - do it all at once.
+        $scope.dataFactory.factoryRetrieveFamilyMember(user_id).then(function() {
+            //console.log('success controller factoryRetrieveFamilyMember coming back');
+            $scope.familyMembers = $scope.dataFactory.factoryShowFamilyMember();
+        });
+
+
+        //console.log('success controller factoryRetrieveUser user_id: ', user_id);
         $scope.user_id = $scope.user.user_id;
         $scope.user_name = $scope.user.first_name;
         return user_id;
     });
 
-    $scope.postFamilyMember = function() {
+    //$scope.dataFactory.factoryRetrieveFamilyMember().then(function() {
+    //    console.log('success controller factoryRetrieveFamilyMember coming back');
+    //    $scope.familyMembers = $scope.dataFactory.factoryShowFamilyMember();
+    //});
 
-        console.log('first_name; ', $scope.first_name);
-        console.log('last_name; ', $scope.last_name);
+    $scope.postFamilyMember = function() {
 
         $http({
             method: 'POST',
@@ -35,7 +45,7 @@ myApp.controller('SuccessController', ['$scope', '$http', '$window', 'DataFactor
             $scope.name = response.config.data.first_name;
             $scope.first_name = '';
             $scope.last_name = '';
-            console.log(response.config.data);
+            console.log('family member added: ', response.config.data);
         });
     };
 

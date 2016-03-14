@@ -5,7 +5,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/homeView', {
             templateUrl: '/views/templates/homeView.html',
-            controller: 'HomeViewController'
+            controller: 'SuccessController'
         })
         .when('/medications', {
             templateUrl: 'medications.html',
@@ -32,8 +32,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'VisitsListController'
         })
         .when('/addFamily', {
-            templateUrl: '/views/templates/addFamily.html'
-            //controller: 'AddFamilyController'
+            templateUrl: '/views/templates/addFamily.html',
+            controller: 'SuccessController'
         })
         .when('/familyMember', {
             templateUrl: '/views/templates/familyMember.html',

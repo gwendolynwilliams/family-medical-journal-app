@@ -15,8 +15,6 @@ router.get('/', function(req, res, next) {
 
 // Handles POST request with new user data
 router.post('/', function(req, res, next) {
-    //console.log('register.js post request');
-    //console.log('password: ', req.body.password);
     var saveUser = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -39,7 +37,7 @@ router.post('/', function(req, res, next) {
                 } else {
                     user_id = result.rows[0].user_id;
                     console.log('user id on the server: ', result.rows[0].user_id);
-                    res.redirect('/'); //commenting this out because it's breaking things
+                    res.redirect('/');
                 }
             });
     });

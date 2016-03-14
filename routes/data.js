@@ -10,9 +10,10 @@ var connection = require('../modules/connection');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+var id = '';
+
 router.post('/addFamilyMember', function(req, res) {
     var results=[];
-    //console.log('user_id in addFamilyMember route: ', req.body.user_id);
 
     pg.connect(connection, function(err, client, done) {
         client.query('INSERT INTO family_members (user_id, first_name, last_name) VALUES ($1, $2, $3);',
@@ -121,12 +122,14 @@ router.get('/user', function(req, res) {
     });
 });
 
-router.get('/familyMember', function(req, res) {
+router.get('/familyMember/*', function(req, res) {
     var results = [];
+    //id = req.body.user_id;
+    var id = req.params[0];
 
     pg.connect(connection, function(err, client, done) {
         var query = client.query('SELECT * FROM family_members WHERE user_id = $1;',
-        ['3']);  // need to dynamically generate or pass in the user_id - now it is hard coded
+        [id]);  // need to dynamically generate or pass in the user_id - now it is hard coded
 
         //Stream results back one row at a time
         query.on('row', function(row) {

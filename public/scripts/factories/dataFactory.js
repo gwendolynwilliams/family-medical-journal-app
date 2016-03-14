@@ -14,8 +14,8 @@ myApp.factory('DataFactory', ['$http', function($http) {
 
     };
 
-    var getFamilyMember = function() {
-        var promise = $http.get('/familyMember').then(function(response) {
+    var getFamilyMember = function(user) {
+        var promise = $http.get('/familyMember/' + user).then(function(response) {
             familyMember = response.data;
             return familyMember;
         });
@@ -28,13 +28,15 @@ myApp.factory('DataFactory', ['$http', function($http) {
             return getUser();
         },
         factoryShowUser: function() {
-            console.log('user: ', user);
+            //console.log('factoryShowUser user: ', user);
             return user;
         },
-        factoryRetrieveFamilyMember: function() {
-            return getFamilyMember();
+        factoryRetrieveFamilyMember: function(user) {
+            //console.log('factoryRetrieveFamilyMember user: ', user);
+            return getFamilyMember(user);
         },
         factoryShowFamilyMember: function() {
+            //console.log('factoryShowFamilyMember familyMember: ', familyMember);
             return familyMember;
         }
         //postToDatabase: function(animals) {
