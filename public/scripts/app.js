@@ -3,16 +3,12 @@ var myApp = angular.module('myApp', ['ngRoute']);
 myApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
-        .when('/login', {
-            templateUrl: '/views/templates/login.html',
-            controller: 'LoginController'
-        })
-        .when('/home', {
-            templateUrl: '/views/templates/home.html',
-            controller: 'HomeController'
+        .when('/homeView', {
+            templateUrl: '/views/templates/homeView.html',
+            controller: 'HomeViewController'
         })
         .when('/medications', {
-            templateUrl: '/views/templates/medications.html',
+            templateUrl: 'medications.html',
             controller: 'MedicationsController'
         })
         .when('/medicationsList', {
@@ -36,19 +32,14 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'VisitsListController'
         })
         .when('/addFamily', {
-            templateUrl: '/views/templates/addFamily.html',
-            controller: 'AddFamilyController'
+            templateUrl: '/views/templates/addFamily.html'
+            //controller: 'AddFamilyController'
         })
         .when('/familyMember', {
             templateUrl: '/views/templates/familyMember.html',
             controller: 'FamilyMemberController'
         })
-        .when('/register', {
-            templateUrl: '/views/templates/register.html',
-            controller: 'RegisterController'
-        })
-
         .otherwise({
-            redirectTo: 'home'
+            redirectTo: '/homeView'
         });
 }]);

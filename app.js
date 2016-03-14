@@ -8,9 +8,9 @@ var passport = require('./strategies/user.js');
 var session = require('express-session');
 
 // Route includes
-var register = require('./routes/register');
 var login = require('./routes/login');
 var user = require('./routes/user');
+var register = require('./routes/register');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,8 +36,11 @@ app.use('/', dataRoute);
 
 // Serve back static files
 app.use(express.static('public'));
-app.use(express.static('public/views'));
+app.use(express.static('public/images'));
 app.use(express.static('public/scripts'));
+app.use(express.static('public/views'));
+app.use(express.static('public/views/styles'));
+app.use(express.static('public/views/templates'));
 app.use(express.static('public/vendors'));
 
 app.set('port', process.env.PORT || 5000);

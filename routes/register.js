@@ -10,7 +10,7 @@ var pg = require('pg');
 
 // Handles request for HTML file
 router.get('/', function(req, res, next) {
-    res.sendFile(path.resolve(__dirname, '../public/views/register.html'));
+    res.sendFile(path.resolve(__dirname, '../public/views/registerDELETE.html'));
 });
 
 // Handles POST request with new user data
@@ -28,13 +28,6 @@ router.post('/', function(req, res, next) {
 
     pg.connect(connection, function(err, client, done) {
 
-        if(err) {
-            console.log("Error connecting: ", err);
-            next(err);
-        } else {
-            //res.redirect('/'); commenting this out because it's breaking things
-        }
-
         client.query("INSERT INTO users (first_name, last_name, password, username) VALUES ($1, $2, $3, $4) RETURNING user_id",
             [saveUser.first_name, saveUser.last_name, saveUser.password, saveUser.username],
             function (err, result) {
@@ -46,7 +39,7 @@ router.post('/', function(req, res, next) {
                 } else {
                     user_id = result.rows[0].user_id;
                     console.log('user id on the server: ', result.rows[0].user_id);
-                    res.redirect('/success.html'); //commenting this out because it's breaking things
+                    res.redirect('/'); //commenting this out because it's breaking things
                 }
             });
     });

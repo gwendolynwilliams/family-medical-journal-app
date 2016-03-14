@@ -1,4 +1,4 @@
-myApp.controller('HomeController', ['$scope', 'DataFactory', function($scope, DataFactory) {
+myApp.controller('HomeViewController', ['$scope', 'DataFactory', function($scope, DataFactory) {
 
     $scope.dataFactory = DataFactory;
 

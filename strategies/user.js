@@ -5,7 +5,7 @@ var connection = require('../modules/connection');
 var pg = require('pg');
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.user_id);
 });
 
 passport.deserializeUser(function(id, done) {
