@@ -5,13 +5,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/homeView', {
             templateUrl: '/views/templates/homeView.html',
-            controller: 'SuccessController'
+            controller: 'HomeViewController'
         })
-        .when('/medications', {
-            templateUrl: 'medications.html',
+        .when('/medications/:id', {
+            templateUrl: '/views/templates/medications.html',
             controller: 'MedicationsController'
         })
-        .when('/medicationsList', {
+        .when('/medicationsList/:id', {
             templateUrl: '/views/templates/medicationsList.html',
             controller: 'MedicationsListController'
         })
@@ -19,7 +19,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/statistics.html',
             controller: 'StatisticsController'
         })
-        .when('/statisticsList', {
+        .when('/statisticsList/:id', {
             templateUrl: '/views/templates/statisticsList.html',
             controller: 'StatisticsListController'
         })
@@ -27,17 +27,21 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/visits.html',
             controller: 'VisitsController'
         })
-        .when('/visitsList', {
+        .when('/visitsList/:id', {
             templateUrl: '/views/templates/visitsList.html',
             controller: 'VisitsListController'
         })
-        .when('/addFamily', {
+        .when('/addFamily/:id', {
             templateUrl: '/views/templates/addFamily.html',
-            controller: 'SuccessController'
+            controller: 'AddFamilyController'
         })
-        .when('/familyMember', {
+        .when('/familyMember/:id', {
             templateUrl: '/views/templates/familyMember.html',
             controller: 'FamilyMemberController'
+        })
+        .when('/unauthorized', {
+            templateUrl: '/views/templates/unauthorized.html'
+            //controller: 'FamilyMemberController'
         })
         .otherwise({
             redirectTo: '/homeView'

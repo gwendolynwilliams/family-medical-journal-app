@@ -2,12 +2,11 @@
     <div class="offset-by-three six columns">
 
         <h3>Home</h3>
-        <!--<p>user id: {{user_id}}</p>-->
+        <p>{{user_first_name}} {{user_last_name}} (id: {{user_id}})</p>
         <div ng-repeat="familyMember in familyMembers" ng-model="factoryRetrieveFamilyMember">
-            <p><a href="#familyMember">{{familyMember.first_name}}</a></p>
+            <p><a href="#familyMember/{{familyMember.family_member_id}}">{{familyMember.first_name}} {{familyMember.last_name}}</a></p>
         </div>
-        <a class="button" href="#addFamily">Add Family Member</a>
-            <!--<button ng-click="">Add Family Member</button>-->
+        <a class="button" href="#addFamily/{{user_id}}">Add Family Member</a>
 
     </div>
 </div>

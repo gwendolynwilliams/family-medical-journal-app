@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 var id = '';
 
 router.post('/addFamilyMember', function(req, res) {
+
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
@@ -31,6 +32,7 @@ router.post('/addFamilyMember', function(req, res) {
 });
 
 router.post('/medication', function(req, res) {
+
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
@@ -51,6 +53,7 @@ router.post('/medication', function(req, res) {
 });
 
 router.post('/visit', function(req, res) {
+
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
@@ -71,6 +74,7 @@ router.post('/visit', function(req, res) {
 });
 
 router.post('/statistic', function(req, res) {
+
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
@@ -94,42 +98,14 @@ router.post('/statistic', function(req, res) {
     });
 });
 
-router.get('/user', function(req, res) {
-    console.log('made it to the data.js user route');
-
-    var results = [];
-
-    pg.connect(connection, function(err, client, done) {
-        var query = client.query('SELECT * FROM users WHERE user_id = $1',
-            [3]); // need to dynamically generate or pass in the user_id - now it is hard coded
-
-        //Stream results back one row at a time
-        query.on('row', function(row) {
-            results.push(row);
-        });
-
-        //close connection
-        query.on('end', function() {
-            done();
-            //console.log(results);
-            return res.json(results);
-        });
-
-        if(err) {
-            console.log(err);
-        }
-
-    });
-});
-
 router.get('/familyMember/*', function(req, res) {
+
     var results = [];
-    //id = req.body.user_id;
     var id = req.params[0];
 
     pg.connect(connection, function(err, client, done) {
         var query = client.query('SELECT * FROM family_members WHERE user_id = $1;',
-        [id]);  // need to dynamically generate or pass in the user_id - now it is hard coded
+        [id]);
 
         //Stream results back one row at a time
         query.on('row', function(row) {
@@ -149,6 +125,95 @@ router.get('/familyMember/*', function(req, res) {
 
     });
 });
+
+router.get('/medications/*', isAuthorized, function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM medications ' +
+            'JOIN family_members ON family_members.family_member_id = medications.family_member_id ' +
+            'WHERE family_members.family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/statistics/*', isAuthorized, function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM statistics ' +
+            'JOIN family_members ON family_members.family_member_id = statistics.family_member_id ' +
+            'WHERE family_members.family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/visits/*', isAuthorized, function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM visits ' +
+            'JOIN family_members ON family_members.family_member_id = visits.family_member_id ' +
+            'WHERE family_members.family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+
 
 //router.delete('/*', function(req, res) {
 //    var results = [];
@@ -175,5 +240,40 @@ router.get('/familyMember/*', function(req, res) {
 //    });
 //});
 
+// checks to see if user is authorized to view family member
+function isAuthorized(req, res, next) {
+    pg.connect(connection, function(err, client, done) {
+        var user_id = req.user.user_id;
+        var family_member_id = req.params[0];
+        console.log('isAuthorized user_id: ', user_id);
+        console.log('isAuthorized family_member_id: ', family_member_id);
+        var results = [];
+
+        var query = client.query('SELECT * FROM family_members WHERE family_member_id = $1 AND user_id = $2;',
+            [family_member_id, user_id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            console.log(results);
+
+            if(results.length == 1) {
+                return next();
+            }
+            console.log('NOPE!');
+            res.sendStatus(403);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+}
 
 module.exports = router;

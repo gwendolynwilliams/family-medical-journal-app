@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var dataRoute = require('./routes/data');
+var unauthorized = require('./routes/unauthorized');
 
 // Strategy
 var passport = require('./strategies/user.js');
@@ -32,6 +33,7 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/login', login);
 app.use('/user', user);
+app.use('/unauthorized', unauthorized);
 app.use('/', dataRoute);
 
 // Serve back static files

@@ -1,13 +1,16 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h4 class="u-full-width">Doctor Visits, Urgent Care, and Hospital Visits</h4>
-        <p>Date: </p>
-        <p>Location: </p>
-        <p>Reason for visit:</p>
-        <p>Date discharged (if applicable): </p>
-        <p>Treatment: </p>
-        <p>Notes: </p>
+        <h4>Doctors Visits & Hospitalizations for {{family_member_first_name}} {{family_member_last_name}}</h4>
+        <div ng-repeat="visit in visits">
+            <p><strong>{{visit.visit_type}}</strong><br />
+                Location: {{visit.location}}<br />
+                Reason: {{visit.reason | date}}<br />
+                Visit Date: {{visit.visit_date | date}}<br />
+                Discharge Date: {{visit.discharge_date | date}}<br />
+                Treatment: {{visit.treatment}}<br />
+                Notes: {{visit.notes}}</p>
+        </div>
 
     </div>
 </div>

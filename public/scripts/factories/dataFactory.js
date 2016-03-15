@@ -9,9 +9,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
             user = response.data;
             return user;
         });
-        //console.log('promise: ', promise);
         return promise;
-
     };
 
     var getFamilyMember = function(user) {

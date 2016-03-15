@@ -1,15 +1,16 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h4 class="u-full-width">Medications List</h4>
-        <p>Medication Name<br />
-        Dosage: <br />
-        Frequency taken: <br />
-        Date started taking medication: <br />
-        Date stopped taking medication: <br />
-        Reason for medication: <br />
-        Prescribing Physician: <br />
-        Notes: </p>
+        <h4 class="u-full-width">Medications for {{family_member_first_name}} {{family_member_last_name}}</h4>
+        <div ng-repeat="medication in medications">
+            <p><strong>{{medication.medication_name}}</strong><br />
+                Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
+                Date Started: {{medication.date_started | date}}<br />
+                Date Stopped: {{medication.date_stopped | date}}<br />
+                Prescribing Physician: {{medication.physician}}<br />
+                Reason for Medication: {{medication.reason}}<br />
+                Notes: {{medication.notes}}</p>
+        </div>
 
     </div>
 </div>
