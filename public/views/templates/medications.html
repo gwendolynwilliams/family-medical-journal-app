@@ -4,6 +4,9 @@
         <h4 class="u-full-width">Add Medication</h4>
 
         <form name="medications">
+            <label for="family_member">Family Member:</label>
+            <select id="family_member" ng-model="family_member" ng-options="family_member for family_member in firstNames"></select>
+
             <label for="medication_name">Medication: </label>
             <input class="u-full-width" type="text" ng-model="medication_name" id="medication_name" required />
 

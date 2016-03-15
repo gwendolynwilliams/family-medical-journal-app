@@ -19,14 +19,13 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
             $scope.user = $scope.dataFactory.factoryShowUser();
             user_id = $scope.user.user_id;
 
-
             $scope.dataFactory.factoryRetrieveFamilyMember(user_id).then(function() {
                 $scope.familyMembers = $scope.dataFactory.factoryShowFamilyMember();
+                //console.log('scope.familymembers: ', $scope.familyMembers);
             });
 
             $scope.user_id = $scope.user.user_id;
             $scope.user_name = $scope.user.first_name;
-
             return user_id;
         });
     }
@@ -49,6 +48,8 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
         $http.get('/medications/' + id).then(function(response) {
             if(response.data) {
                 $scope.medications = response.data;
+                $scope.family_member_first_name = $scope.medications[0].first_name;
+                $scope.family_member_last_name = $scope.medications[0].last_name;
             } else {
                 console.log('failed to get user route');
                 $window.location.href = '/index.html';

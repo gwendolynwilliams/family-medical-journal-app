@@ -4,6 +4,8 @@
         <h4 class="u-full-width">Add Statistic</h4>
 
         <form>
+            <label for="family_member">Family Member:</label>
+            <select id="family_member" ng-model="family_member" ng-options="family_member for family_member in firstNames"></select>
 
             <label for="feet">Height (feet): </label>
             <input type="text" ng-model="feet" id="feet" />

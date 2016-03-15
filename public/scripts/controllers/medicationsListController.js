@@ -5,6 +5,7 @@ myApp.controller('MedicationsListController', ['$scope', '$http', '$window', '$l
 
     showMedications($scope.familyMemberID);
 
+    //shows all medications for a particular family member
     function showMedications(id) {
 
         $http.get('/medications/' + id).then(function(response) {

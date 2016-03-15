@@ -4,6 +4,9 @@
         <h4 class="u-full-width">Add Doctor's Visit, Urgent Care, or Hospital Visit</h4>
 
         <form>
+            <label for="family_member">Family Member:</label>
+            <select id="family_member" ng-model="family_member" ng-options="family_member for family_member in firstNames"></select>
+
             <label for="visit_type">Type of Visit: </label>
             <select id="visit_type" ng-model="visit_type">
                 <option value="Primary Care Physician">Primary Care Physician</option>
