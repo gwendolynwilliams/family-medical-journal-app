@@ -17,10 +17,6 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
 
             $scope.dataFactory.factoryRetrieveFamilyMember(user_id).then(function() {
                 $scope.familyMembers = $scope.dataFactory.factoryShowFamilyMember();
-
-                //angular.forEach($scope.familyMembers, function(value){
-                //    $scope.firstNames.push(value.first_name);
-                //});
             });
         });
     }

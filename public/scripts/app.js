@@ -27,7 +27,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/visits.html',
             controller: 'VisitsController'
         })
-        .when('/visitsList', {
+        .when('/visitsList/:id', {
             templateUrl: '/views/templates/visitsList.html',
             controller: 'VisitsListController'
         })

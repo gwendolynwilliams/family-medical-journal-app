@@ -1,6 +1,5 @@
 myApp.controller('StatisticsListController', ['$scope', '$http', '$window', '$location', '$routeParams', function($scope, $http, $window, $location, $routeParams) {
 
-
     $scope.statistics = [];
     $scope.familyMemberID = $routeParams.id;
 

@@ -41,6 +41,15 @@ ADD FOREIGN KEY (family_member_id)
 REFERENCES family_members(family_member_id)
 ;
 
+ALTER TABLE medications
+DROP CONSTRAINT medications_family_member_id_fkey;
+
+ALTER TABLE medications
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+ON DELETE CASCADE
+;
+
 CREATE TABLE immunizations
 (
 immunization_id SERIAL PRIMARY KEY,
@@ -82,6 +91,9 @@ ADD FOREIGN KEY (family_member_id)
 REFERENCES family_members(family_member_id)
 ;
 
+ALTER TABLE statistics
+DROP CONSTRAINT statistics_family_member_id_fkey;
+
 
 CREATE TABLE symptoms
 (
@@ -115,4 +127,13 @@ notes VARCHAR(255)
 ALTER TABLE visits
 ADD FOREIGN KEY (family_member_id)
 REFERENCES family_members(family_member_id)
+;
+
+ALTER TABLE visits
+DROP CONSTRAINT visits_family_member_id_fkey;
+
+ALTER TABLE visits
+ADD FOREIGN KEY (family_member_id)
+REFERENCES family_members(family_member_id)
+ON DELETE CASCADE
 ;

@@ -2,14 +2,17 @@
     <div class="offset-by-one ten columns">
 
         <h4>Doctors Visits & Hospitalizations for {{family_member_first_name}} {{family_member_last_name}}</h4>
+        <p ng-show="deleted">visit deleted!</p>
         <div ng-repeat="visit in visits">
             <p><strong>{{visit.visit_type}}</strong><br />
-                Location: {{visit.location}}<br />
-                Reason: {{visit.reason | date}}<br />
-                Visit Date: {{visit.visit_date | date}}<br />
-                Discharge Date: {{visit.discharge_date | date}}<br />
-                Treatment: {{visit.treatment}}<br />
-                Notes: {{visit.notes}}</p>
+            Location: {{visit.location}}<br />
+            Reason: {{visit.reason | date}}<br />
+            Visit Date: {{visit.visit_date | date}}<br />
+            Discharge Date: {{visit.discharge_date | date}}<br />
+            Treatment: {{visit.treatment}}<br />
+            Notes: {{visit.notes}}<br />
+            <button ng-click="deleteVisit(visit_id)">Delete Visit</button></p>
+
         </div>
 
     </div>

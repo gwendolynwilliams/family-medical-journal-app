@@ -241,32 +241,71 @@ router.get('/visits/*', isAuthorized, function(req, res) {
     });
 });
 
+router.delete('/familyMember/*', function(req, res) {
+    var results = [];
 
+    var id = req.params[0];
 
-//router.delete('/*', function(req, res) {
-//    var results = [];
-//
-//    var id = req.params[0]; // - first request
-//    console.log('id: ', id);
-//
-//
-//    pg.connect(connectionString, function(err, client, done) {
-//        client.query('DELETE FROM favorites WHERE api_id = ($1);',
-//            [id],
-//
-//            function(err, results) {
-//                done();
-//                if(err) {
-//                    console.log('Error deleting data: ', err);
-//                    res.send(false);
-//                } else {
-//                    //console.log(id);
-//                    res.send(results);
-//                }
-//            });
-//
-//    });
-//});
+    pg.connect(connection, function(err, client, done) {
+        client.query('DELETE FROM family_members WHERE family_member_id = ($1);',
+            [id],
+
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error deleting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+
+    });
+});
+
+router.delete('/medication/*', function(req, res) {
+    var results = [];
+
+    var id = req.params[0];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('DELETE FROM medications WHERE medication_id = ($1);',
+            [id],
+
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error deleting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+
+    });
+});
+
+router.delete('/visit/*', function(req, res) {
+    var results = [];
+
+    var id = req.params[0];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('DELETE FROM visits WHERE visit_id = ($1);',
+            [id],
+
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error deleting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+
+    });
+});
 
 // checks to see if user is authorized to view family member
 function isAuthorized(req, res, next) {

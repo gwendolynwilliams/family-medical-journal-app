@@ -88,4 +88,17 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
         });
     }
 
+    $scope.deleteFamilyMember = function(id) {
+        $scope.deleted = false;
+
+        var deleteUser = $window.confirm('Are you absolutely sure you want to delete?');
+
+        if (deleteUser) {
+            $http.delete('/familyMember/' + id).then(function(response) {
+                retrieveUser(); // not sure if this is going to work - it might break - trying to reload users without deleted user
+                $scope.deleted = true;
+            });
+        }
+    };
+
 }]);
