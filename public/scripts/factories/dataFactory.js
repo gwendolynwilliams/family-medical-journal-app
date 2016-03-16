@@ -13,7 +13,7 @@ myApp.factory('DataFactory', ['$http', function($http) {
     };
 
     var getFamilyMember = function(user) {
-        var promise = $http.get('/familyMember/' + user).then(function(response) {
+        var promise = $http.get('/familyMembers/' + user).then(function(response) {
             familyMember = response.data;
             return familyMember;
         });

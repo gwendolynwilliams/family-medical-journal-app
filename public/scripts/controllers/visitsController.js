@@ -3,6 +3,7 @@ myApp.controller('VisitsController', ['$scope', '$http', 'DataFactory', function
     $scope.dataFactory = DataFactory;
     $scope.visit = false;
     $scope.firstNames = [];
+    $scope.selectedFamilyMemberID = '';
     var user_id = '';
 
     retrieveUser();
@@ -29,6 +30,7 @@ myApp.controller('VisitsController', ['$scope', '$http', 'DataFactory', function
             method: 'POST',
             url: '/visit',
             data: {
+                family_member_id: $scope.selectedFamilyMemberID,
                 visit_type: $scope.visit_type,
                 location: $scope.location,
                 reason: $scope.reason,

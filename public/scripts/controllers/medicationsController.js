@@ -3,6 +3,7 @@ myApp.controller('MedicationsController', ['$scope', '$http', 'DataFactory', fun
     $scope.dataFactory = DataFactory;
     $scope.medications = [];
     $scope.firstNames = [];
+    $scope.selectedFamilyMemberID = '';
     var user_id = '';
 
     retrieveUser();
@@ -29,6 +30,7 @@ myApp.controller('MedicationsController', ['$scope', '$http', 'DataFactory', fun
             url: '/medication',
             data: {
                 medication_name: $scope.medication_name,
+                family_member_id: $scope.selectedFamilyMemberID,
                 dosage: $scope.dosage,
                 frequency: $scope.frequency,
                 date_started: $scope.date_started,

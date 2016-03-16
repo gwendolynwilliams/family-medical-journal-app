@@ -3,7 +3,9 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
     $scope.dataFactory = DataFactory;
     $scope.statistic = false;
     $scope.firstNames = [];
+    $scope.selectedFamilyMemberID = '';
     var user_id = '';
+
 
     retrieveUser();
 
@@ -16,9 +18,9 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
             $scope.dataFactory.factoryRetrieveFamilyMember(user_id).then(function() {
                 $scope.familyMembers = $scope.dataFactory.factoryShowFamilyMember();
 
-                angular.forEach($scope.familyMembers, function(value){
-                    $scope.firstNames.push(value.first_name);
-                });
+                //angular.forEach($scope.familyMembers, function(value){
+                //    $scope.firstNames.push(value.first_name);
+                //});
             });
         });
     }
@@ -28,6 +30,7 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
             method: 'POST',
             url: '/statistic',
             data: {
+                family_member_id: $scope.selectedFamilyMemberID,
                 feet: $scope.feet,
                 inches: $scope.inches,
                 weight: $scope.weight,

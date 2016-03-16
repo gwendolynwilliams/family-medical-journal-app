@@ -36,9 +36,9 @@ router.post('/medication', function(req, res) {
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
-        client.query('INSERT INTO medications (medication_name, dosage, frequency, date_started, ' +
-            'date_stopped, physician, reason, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
-            [req.body.medication_name, req.body.dosage, req.body.frequency, req.body.date_started,
+        client.query('INSERT INTO medications (medication_name, family_member_id, dosage, frequency, date_started, ' +
+            'date_stopped, physician, reason, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);',
+            [req.body.medication_name, req.body.family_member_id, req.body.dosage, req.body.frequency, req.body.date_started,
                 req.body.date_stopped, req.body.physician, req.body.reason, req.body.notes],
             function(err, results) {
                 done();
@@ -57,9 +57,9 @@ router.post('/visit', function(req, res) {
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
-        client.query('INSERT INTO visits (visit_type, location, reason, visit_date, ' +
-            'discharge_date, treatment, notes) VALUES ($1, $2, $3, $4, $5, $6, $7);',
-            [req.body.visit_type, req.body.location, req.body.reason, req.body.visit_date,
+        client.query('INSERT INTO visits (family_member_id, visit_type, location, reason, visit_date, ' +
+            'discharge_date, treatment, notes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);',
+            [req.body.family_member_id, req.body.visit_type, req.body.location, req.body.reason, req.body.visit_date,
                 req.body.discharge_date, req.body.treatment, req.body.notes],
             function(err, results) {
                 done();
@@ -78,11 +78,11 @@ router.post('/statistic', function(req, res) {
     var results=[];
 
     pg.connect(connection, function(err, client, done) {
-        client.query('INSERT INTO statistics (feet, inches, weight, date_of_birth, ' +
+        client.query('INSERT INTO statistics (family_member_id, feet, inches, weight, date_of_birth, ' +
             'physician, physician_phone, physician_street_1, physician_street_2, physician_city, ' +
             'physician_state, physician_zip, blood_type, med_allergies, notes) ' +
-            'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);',
-            [req.body.feet, req.body.inches, req.body.weight, req.body.date_of_birth,
+            'VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);',
+            [req.body.family_member_id, req.body.feet, req.body.inches, req.body.weight, req.body.date_of_birth,
                 req.body.physician, req.body.physician_phone, req.body.physician_street_1,
                 req.body.physician_street_2, req.body.physician_city, req.body.physician_state,
                 req.body.physician_zip, req.body.blood_type, req.body.med_allergies, req.body.notes],
@@ -98,7 +98,7 @@ router.post('/statistic', function(req, res) {
     });
 });
 
-router.get('/familyMember/*', function(req, res) {
+router.get('/familyMembers/*', function(req, res) {
 
     var results = [];
     var id = req.params[0];
@@ -115,7 +115,35 @@ router.get('/familyMember/*', function(req, res) {
         //close connection
         query.on('end', function() {
             done();
-            //console.log(results);
+            console.log('family member results: ', results);
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/familyMember/*', isAuthorized, function(req, res) {
+
+    var results = [];
+    var id = req.params[0];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM family_members WHERE family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            console.log('family member results: ', results);
             return res.json(results);
         });
 
