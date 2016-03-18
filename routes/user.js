@@ -9,11 +9,11 @@ router.get('/', function(req, res) {
     if(req.isAuthenticated()) {
         // send back user object from database
         res.send(req.user);
-        console.log('authenticated');
+        //console.log('authenticated');
     } else {
         // failure best handled on the server. do redirect here.
         res.send(false);
-        console.log('not authenticated');
+        //console.log('not authenticated');
     }
 });
 

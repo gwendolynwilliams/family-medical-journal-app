@@ -3,44 +3,38 @@
 
         <h4 class="u-full-width"> {{family_member_first_name}} {{family_member_last_name}}</h4>
         <p>User: {{user_name}} (id: {{familyMemberID}})</p>
+
+        <p ng-show="deleted">deleted!</p>
+
         <h5><a href="#medicationsList/{{familyMemberID}}">Medications</a></h5>
 
-        <div ng-repeat="medication in medications">
+        <div ng-repeat="medication in medications | orderBy:'+medication_name'">
             <p><strong>{{medication.medication_name}}</strong><br />
             Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
-            Date Started: {{medication.date_started | date}}<br />
-            Date Stopped: {{medication.date_stopped | date}}<br />
-            Prescribing Physician: {{medication.physician}}<br />
-            Reason for Medication: {{medication.reason}}<br />
-            Notes: {{medication.notes}}</p>
+            Date Started: {{medication.date_started | date}}<br /></p>
         </div>
 
         <h5><a href="#statisticsList/{{familyMemberID}}">Statistics</a></h5>
         <p>
-            Height: {{statistics.feet}}' {{statistics.inches}}"<br />
-            Weight: {{statistics.weight}}<br />
-            Date of Birth: {{statistics.date_of_birth | date}}<br />
-            Physician: {{statistics.physician}}<br />
-            Physician Address: {{statistics.physician_street_1}}, {{statistics.physician_street_2}},
-            {{statistics.physician_city}}, {{statistics.physician_state}} {{statistics.physician_zip}}<br />
-            Blood Type: {{statistics.blood_type}}<br />
-            Medication Allergies: {{statistics.med_allergies}}<br />
-            Notes: {{medication.notes}}
+            <span ng-if="statistics.feet != null">Height: {{statistics.feet}}' {{statistics.inches}}"<br /></span>
+            <span ng-if="statistics.weight != null">Weight: {{statistics.weight}}<br /></span>
+            <span ng-if="statistics.date_of_birth != null">Date of Birth: {{statistics.date_of_birth | date}}<br /></span>
+            <span ng-if="statistics.physician != null">Physician: {{statistics.physician}}<br /></span>
+            <span ng-if="statistics.physician_street_1 != null">Physician Address: {{statistics.physician_street_1}}, {{statistics.physician_street_2}},
+            {{statistics.physician_city}}, {{statistics.physician_state}} {{statistics.physician_zip}}<br /></span>
+            <span ng-if="statistics.blood_type != null"> Blood Type: {{statistics.blood_type}}<br /></span>
+            <span ng-if="statistics.med_allergies != null">Medication Allergies: {{statistics.med_allergies}}<br /></span>
+            <span ng-if="statistics.notes != null">Notes: {{statistics.notes}}</span>
         </p>
 
         <h5><a href="#visitsList/{{familyMemberID}}">Doctors Visits & Hospitalizations</a></h5>
-        <div ng-repeat="visit in visits">
-            <p><strong>{{visit.visit_type}}</strong><br />
+        <div ng-repeat="visit in visits | orderBy:'-visit_date'">
+            <p><strong>Visit Date: {{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />
-                Reason: {{visit.reason | date}}<br />
-                Visit Date: {{visit.visit_date | date}}<br />
-                Discharge Date: {{visit.discharge_date | date}}<br />
-                Treatment: {{visit.treatment}}<br />
-                Notes: {{visit.notes}}</p>
+                Reason: {{visit.reason | date}}<br /></p>
         </div>
 
         <p><button ng-click="deleteFamilyMember(familyMemberID)">Delete Family Member</button>
-        <p ng-show="deleted">deleted!</p>
 
     </div>
 </div>

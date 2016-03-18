@@ -2,17 +2,55 @@
     <div class="offset-by-one ten columns">
 
         <h4 class="u-full-width">Medications for {{family_member_first_name}} {{family_member_last_name}}</h4>
-        <p ng-show="deleted">medication deleted!</p>
-        <div ng-repeat="medication in medications">
-            <p><strong>{{medication.medication_name}}</strong><br />
-            Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
-            Date Started: {{medication.date_started | date}}<br />
-            Date Stopped: {{medication.date_stopped | date}}<br />
-            Prescribing Physician: {{medication.physician}}<br />
-            Reason for Medication: {{medication.reason}}<br />
-            Notes: {{medication.notes}}<br />
+        <p ng-show="deleted">Medication deleted!</p>
+        <p ng-show="edited">Medication edited!</p>
 
-            <button ng-click="deleteMedication(medication_id)">Delete Medication</button></p>
+        <div ng-show="showForm">
+            <form name="medications">
+                <label for="medication_name">Medication: </label>
+                <input class="u-full-width" type="text" ng-model="form_medication_name" id="medication_name" required />
+
+                <label for="dosage">Dosage: </label>
+                <input class="u-full-width" type="text" ng-model="form_dosage" id="dosage" required />
+
+                <label for="frequency">Frequency: </label>
+                <input class="u-full-width" type="text" ng-model="form_frequency" id="frequency" />
+
+                <label for="date_started">Date Started Medication: </label>
+                <input type="date" ng-model="form_date_started" id="date_started" />
+
+                <label for="date_stopped">Date Stopped Medication: </label>
+                <input type="date" ng-model="form_date_stopped" id="date_stopped" />
+
+                <label for="physician">Prescribing Physician: </label>
+                <input class="u-full-width" type="text" ng-model="form_physician" id="physician" />
+
+                <label for="reason">Reason for Medication: </label>
+                <input class="u-full-width" type="text" ng-model="form_reason" id="reason" />
+
+                <label for="notes">Notes: </label>
+                <textarea class="u-full-width" ng-model="form_notes" id="notes"></textarea>
+
+                <p><button ng-click="editMed(medication_id)">Edit Medication</button></p>
+            </form>
+        </div>
+
+        <div ng-show="showMeds">
+            <div ng-repeat="medication in medications">
+                <p>
+                    <strong>{{medication.medication_name}}</strong><br />
+                    Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
+                    Date Started: {{medication.date_started | date}}<br />
+                    Date Stopped: {{medication.date_stopped | date}}<br />
+                    Prescribing Physician: {{medication.physician}}<br />
+                    Reason for Medication: {{medication.reason}}<br />
+                    Notes: {{medication.notes}}<br />
+                    Id: {{medication.medication_id}}
+                    <a href="" ng-click="medToForm(medication.medication_id)">Edit Medication</a> |
+                        <a href="" ng-click="deleteMed(medication.medication_id)">Delete Medication</a>
+                </p>
+            </div>
+        <p><a href="#medications"><button>Add a New Medication</button></a></p>
         </div>
 
     </div>

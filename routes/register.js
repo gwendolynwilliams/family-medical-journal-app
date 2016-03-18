@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
                     next(err);
                 } else {
                     user_id = result.rows[0].user_id;
-                    console.log('user id on the server: ', result.rows[0].user_id);
+                    //console.log('user id on the server: ', result.rows[0].user_id);
                     res.redirect('/');
                 }
             });

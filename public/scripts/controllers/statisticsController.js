@@ -6,7 +6,6 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
     $scope.selectedFamilyMemberID = '';
     var user_id = '';
 
-
     retrieveUser();
 
     function retrieveUser() {

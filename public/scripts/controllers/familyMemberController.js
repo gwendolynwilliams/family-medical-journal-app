@@ -91,7 +91,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
     $scope.deleteFamilyMember = function(id) {
         $scope.deleted = false;
 
-        var deleteUser = $window.confirm('Are you absolutely sure you want to delete?');
+        var deleteUser = $window.confirm('Are you sure you want to delete this family member?');
 
         if (deleteUser) {
             $http.delete('/familyMember/' + id).then(function(response) {

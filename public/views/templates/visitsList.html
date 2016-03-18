@@ -2,18 +2,55 @@
     <div class="offset-by-one ten columns">
 
         <h4>Doctors Visits & Hospitalizations for {{family_member_first_name}} {{family_member_last_name}}</h4>
-        <p ng-show="deleted">visit deleted!</p>
-        <div ng-repeat="visit in visits">
-            <p><strong>{{visit.visit_type}}</strong><br />
-            Location: {{visit.location}}<br />
-            Reason: {{visit.reason | date}}<br />
-            Visit Date: {{visit.visit_date | date}}<br />
-            Discharge Date: {{visit.discharge_date | date}}<br />
-            Treatment: {{visit.treatment}}<br />
-            Notes: {{visit.notes}}<br />
-            <button ng-click="deleteVisit(visit_id)">Delete Visit</button></p>
+        <p ng-show="deleted">Visit deleted!</p>
+        <p ng-show="edited">Visit edited!</p>
 
+        <div ng-show="showForm">
+            <form>
+                <label for="visit_type">Type of Visit: </label>
+                <select id="visit_type" ng-model="form_visit_type">
+                    <option value="Primary Care Physician">Primary Care Physician</option>
+                    <option value="Specialist">Specialist</option>
+                    <option value="Urgent Care">Urgent Care</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="Therapist">Therapist</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                </select>
+
+                <label for="location">Visit Location: </label>
+                <input class="u-full-width" type="text" ng-model="form_location" id="location" />
+
+                <label for="reason">Reason for Visit: </label>
+                <input class="u-full-width" type="text" ng-model="form_reason" id="reason" />
+
+                <label for="visit_date">Visit Date: </label>
+                <input type="date" ng-model="form_visit_date" id="visit_date" />
+
+                <label for="discharge_date">Discharge Date: </label>
+                <input type="date" ng-model="form_discharge_date" id="discharge_date" />
+
+                <label for="treatment">Treatment:</label>
+                <input class="u-full-width" type="text" ng-model="form_treatment" id="treatment" />
+
+                <label for="notes">Notes: </label>
+                <textarea class="u-full-width" ng-model="form_notes" id="notes"></textarea>
+
+                <p><button ng-click="editVisit(visit_id)">Edit Visit</button></p>
+            </form>
         </div>
 
+        <div ng-show="showVisits">
+            <div ng-repeat="visit in visits">
+                <p><strong>{{visit.visit_date | date}}</strong><br />
+                Location: {{visit.location}}<br />
+                Visit Type: {{visit.visit_type}}<br />
+                Reason: {{visit.reason | date}}<br />
+                Discharge Date: {{visit.discharge_date | date}}<br />
+                Treatment: {{visit.treatment}}<br />
+                Notes: {{visit.notes}}<br />
+                <a href="" ng-click="visitToForm(visit.visit_id)">Edit Visit</a> | <a href="" ng-click="deleteVisit(visit.visit_id)">Delete Visit</a></p>
+            </div>
+            <p><a href="#visits"><button>Add a New Visit</button></a></p>
+        </div>
     </div>
 </div>
