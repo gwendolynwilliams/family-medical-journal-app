@@ -10,21 +10,24 @@
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/indexController.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/views/styles/normalize.css" />
     <link rel="stylesheet" href="/views/styles/skeleton.css" />
     <link rel="stylesheet" href="/views/styles/style.css" />
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="IndexController">
+<h2>Family Medical Journal</h2>
 
 <div class="container">
-    <h2>Family Medical Journal</h2>
 
     <div class="row">
         <div class="offset-by-three six columns">
 
             <h4>Log In</h4>
+
+            <p>{{loggedOut}}</p>
 
             <form action="/login" method="post">
                 <label for="username">username: </label>
@@ -34,7 +37,7 @@
                 <input class="u-full-width" type="password" name="password" ng-model="password" id="password" />
 
                 <p><input type="submit" value="Log In" /></p>
-                <p><a href="register.html">Register as a new user</a></p>
+                <p><a href="register.html">Register as a new user</a> | <a href="" ng-click="logout()">Sign Out</a></p>
             </form>
 
         </div>

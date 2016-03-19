@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var id = '';
 
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
 
 router.post('/addFamilyMember', function(req, res) {
 
