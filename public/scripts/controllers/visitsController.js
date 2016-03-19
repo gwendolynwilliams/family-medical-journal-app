@@ -1,4 +1,4 @@
-myApp.controller('VisitsController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory) {
+myApp.controller('VisitsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.dataFactory = DataFactory;
     $scope.visit = false;
@@ -49,6 +49,9 @@ myApp.controller('VisitsController', ['$scope', '$http', 'DataFactory', function
             $scope.discharge_date = '';
             $scope.treatment = '';
             $scope.notes = '';
+
+            var pageId = '/visitsList/' + $scope.selectedFamilyMemberID;
+            $location.path(pageId);
         });
     };
 

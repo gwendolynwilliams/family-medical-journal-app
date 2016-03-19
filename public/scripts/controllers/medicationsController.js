@@ -1,4 +1,4 @@
-myApp.controller('MedicationsController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory) {
+myApp.controller('MedicationsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.dataFactory = DataFactory;
     $scope.medications = [];
@@ -41,6 +41,18 @@ myApp.controller('MedicationsController', ['$scope', '$http', 'DataFactory', fun
             }
         }).then(function(response) {
             console.log(response.data);
+
+            $scope.medication_name = '';
+            $scope.dosage = '';
+            $scope.frequency = '';
+            $scope.date_started = '';
+            $scope.date_stopped = '';
+            $scope.physician = '';
+            $scope.reason = '';
+            $scope.notes = '';
+
+            var pageId = '/medicationsList/' + $scope.selectedFamilyMemberID;
+            $location.path(pageId);
         });
     };
 

@@ -1,4 +1,4 @@
-myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', function($scope, $http, DataFactory) {
+myApp.controller('StatisticsController', ['$scope', '$http', '$location', 'DataFactory', function($scope, $http, $location, DataFactory) {
 
     $scope.dataFactory = DataFactory;
     $scope.statistic = false;
@@ -59,6 +59,9 @@ myApp.controller('StatisticsController', ['$scope', '$http', 'DataFactory', func
             $scope.blood_type = '';
             $scope.med_allergies = '';
             $scope.notes = '';
+
+            var pageId = '/statisticsList/' + $scope.selectedFamilyMemberID;
+            $location.path(pageId);
         });
     };
 

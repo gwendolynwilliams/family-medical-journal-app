@@ -28,7 +28,7 @@ myApp.controller('StatisticsListController', ['$scope', '$http', '$window', '$lo
         $http.get('/statistics/' + id).then(function(response) {
             if(response.data) {
                 $scope.statistics = response.data[0];
-                $scope.statistics_id = response.data[0].statistic_id;
+                $scope.statistics_id = id;
             } else {
                 console.log('failed to get user route');
                 $window.location.href = '/index.html';

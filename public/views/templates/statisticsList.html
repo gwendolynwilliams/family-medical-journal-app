@@ -74,6 +74,7 @@
                 <span ng-if="statistics.notes != null">Notes: {{statistics.notes}}</span>
             </p>
 
+            <p ng-if="statistics == null"><a href="#statistics"><button>Add Statistics</button></a></p>
             <p><a href="" ng-click="statisticsToForm(statistics_id)">Edit Statistics</a></p>
         </div>
 

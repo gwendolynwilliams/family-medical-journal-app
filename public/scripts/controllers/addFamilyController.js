@@ -5,7 +5,6 @@ myApp.controller('AddFamilyController', ['$scope', '$http', '$window', '$routePa
     $scope.familyMember = false;
     $scope.first_name = '';
     $scope.last_name = '';
-    console.log('Add Family Controller');
 
     $scope.familyMembers = [];
     var user_id = '';
@@ -38,7 +37,6 @@ myApp.controller('AddFamilyController', ['$scope', '$http', '$window', '$routePa
             $scope.name = response.config.data.first_name;
             $scope.first_name = '';
             $scope.last_name = '';
-            console.log('family member added: ', response.config.data);
         });
     };
 

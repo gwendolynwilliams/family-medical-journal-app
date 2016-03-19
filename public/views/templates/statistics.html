@@ -2,6 +2,7 @@
     <div class="offset-by-three six columns">
 
         <h4 class="u-full-width">Add Statistic</h4>
+        <p ng-show="added">Added!</p>
 
         <form>
             <label for="family_member">Family Member:</label>
@@ -55,7 +56,6 @@
             <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
 
             <p><a href="#statisticsList"><button ng-click="postStatistic()">Add Statistic</button></a></p>
-            <p ng-show="added">Added!</p>
         </form>
     </div>
 </div>
