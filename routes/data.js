@@ -471,9 +471,6 @@ router.delete('/visit/*', function(req, res) {
 // checks to see if user is authorized to view family member
 function isAuthorized(req, res, next) {
     pg.connect(connection, function(err, client, done) {
-
-        console.log('req:', req);
-
         var user_id = req.user.user_id;
         var family_member_id = req.params[0];
         //console.log('isAuthorized user_id: ', user_id);
