@@ -17,36 +17,45 @@
     <link rel="stylesheet" href="/views/styles/style.css" />
 </head>
 <body ng-app="myApp">
-<div class="header">
-    <h1>Family Medical Journal</h1>
-</div>
 
-<div class="container">
-
-    <div class="row">
-        <div class="offset-by-three six columns">
-
-            <h3 class="bottom-space">Register</h3>
-
-            <form action="/register" method="post">
-                <label for="username">username: </label>
-                <input class="u-full-width" type="text" name="username" id="username" />
-
-                <label for="password">password: </label>
-                <input class="u-full-width" type="password" name="password" id="password" />
-
-                <label for="first_name">First Name: </label>
-                <input class="u-full-width" type="text" name="first_name" id="first_name" />
-
-                <label for="last_name">Last Name: </label>
-                <input class="u-full-width" type="text" name="last_name" id="last_name" />
-
-                <input type="submit" value="Register" class="button"/>
-                <p ng-show="userLoggedIn">Welcome {{user}}! You are now registered!</p>
-            </form>
-        </div>
+<div class="wrapper">
+    <div class="header">
+        <h1>Family Medical Journal</h1>
     </div>
 
+    <div class="container">
+
+        <div class="row">
+            <div class="offset-by-three six columns">
+
+                <h3 class="bottom-space">Register</h3>
+
+                <form action="/register" method="post">
+                    <label for="username">username: </label>
+                    <input class="u-full-width" type="text" name="username" id="username" />
+
+                    <label for="password">password: </label>
+                    <input class="u-full-width" type="password" name="password" id="password" />
+
+                    <label for="first_name">First Name: </label>
+                    <input class="u-full-width" type="text" name="first_name" id="first_name" />
+
+                    <label for="last_name">Last Name: </label>
+                    <input class="u-full-width" type="text" name="last_name" id="last_name" />
+
+                    <input type="submit" value="Register" class="button"/>
+                    <p ng-show="userLoggedIn">Welcome {{user}}! You are now registered. Please log in</p>
+                </form>
+            </div>
+        </div>
+
+    </div>
 </div>
+<div class="push"></div>
+
+<div class="footer">
+    <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
+</div>
+
 </body>
 </html>

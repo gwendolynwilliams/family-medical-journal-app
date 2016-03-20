@@ -19,15 +19,23 @@
     <link rel="stylesheet" href="/views/styles/style.css" />
 </head>
 <body ng-app="myApp" ng-controller="SuccessController">
-<div class="header"><h1>Family Medical Journal</h1></div>
 
-<div class="container">
+<div class="wrapper">
+    <div class="header"><h1>Family Medical Journal</h1></div>
 
-    <div class="offset-by-three six columns">
-        <h5>Welcome, {{user_first_name}}!</h5>
-        <a href="/home.html#/homeView">Go to Home Page</a>
+    <div class="container">
+
+        <div class="offset-by-three six columns">
+            <h5>Welcome, {{user_first_name}}!</h5>
+            <a href="/home.html#/homeView">Go to Home Page</a>
+        </div>
+
     </div>
+</div>
+<div class="push"></div>
 
+<div class="footer">
+    <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
 </div>
 
 </body>

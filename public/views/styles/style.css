@@ -54,6 +54,14 @@
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
     background-color: #e5eef2;
 }
@@ -130,6 +138,18 @@ footer {
 
 .container {
     margin-top: 50px;
+}
+
+.wrapper {
+    min-height: 100%;
+    /*height: auto !important;*/
+    /*height: 100%;*/
+    margin: 0 auto -4em;
+}
+
+.footer, .push {
+    height: 2em;
+    text-align: center;
 }
 
 .nav-container {

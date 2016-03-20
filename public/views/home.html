@@ -32,33 +32,41 @@
 </head>
 <body ng-app="myApp">
 
-<div class="header">
-    <span class="nav-container">
-        <span class="nav">
-            <ul>
-                <li><h2><a href="/index.html">Log In / Sign Out</a></h2></li>
-                <li><h2><a href="#homeView">Family Home</a></h2></li>
-            </ul>
+<div class="wrapper">
+
+
+    <div class="header">
+        <span class="nav-container">
+            <span class="nav">
+                <ul>
+                    <li><h2><a href="/index.html">Log In / Sign Out</a></h2></li>
+                    <li><h2><a href="#homeView">Family Home</a></h2></li>
+                </ul>
+            </span>
         </span>
-    </span>
-    <span class="nav-icon">
-        <a href="#homeView"><img src="/views/images/home.png" width="24ems"/></a>
-    </span>
-    <h1 class="title"><a href="#homeView" class="nav-header">Family Medical Journal</a></h1>
-</div>
-
-<div class="container">
-
-    <div class="row">
-        <main ng-view></main>
+        <span class="nav-icon">
+            <a href="#homeView"><img src="/views/images/home.png" width="24ems"/></a>
+        </span>
+        <h1 class="title"><a href="#homeView" class="nav-header">Family Medical Journal</a></h1>
     </div>
 
-    <footer>
-        <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
-    </footer>
+    <div class="container">
 
+        <div class="row">
+            <main ng-view></main>
+        </div>
 
+    </div>
 </div>
+
+<div class="push"></div>
+
+<div class="footer">
+    <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
+</div>
+
+
+
 
 </body>
 </html>
