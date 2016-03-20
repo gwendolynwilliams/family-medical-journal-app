@@ -1,12 +1,14 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h4 class="u-full-width"> {{family_member_first_name}} {{family_member_last_name}}</h4>
-        <!--<p>User: {{user_name}} (id: {{familyMemberID}})</p>-->
+        <h3 class="u-full-width"> {{family_member_first_name}} {{family_member_last_name}}</h3>
+        <p><a href="#medicationsList/{{familyMemberID}}" class="grey">Medications</a> <span class="spacer">|</span>
+            <a href="#statisticsList/{{familyMemberID}}" class="grey">Statistics</a> <span class="spacer">|</span>
+            <a href="#visitsList/{{familyMemberID}}" class="grey">Doctors Visits & Hospitalizations</a></p>
 
         <p ng-show="deleted">deleted!</p>
 
-        <h5><a href="#medicationsList/{{familyMemberID}}">Medications</a></h5>
+        <h4><a href="#medicationsList/{{familyMemberID}}">Medications</a></h4>
 
         <div ng-repeat="medication in medications | orderBy:'+medication_name'">
             <p><strong>{{medication.medication_name}}</strong><br />
@@ -14,7 +16,7 @@
             Date Started: {{medication.date_started | date}}<br /></p>
         </div>
 
-        <h5><a href="#statisticsList/{{familyMemberID}}">Statistics</a></h5>
+        <h4><a href="#statisticsList/{{familyMemberID}}">Statistics</a></h4>
         <p>
             <span ng-if="statistics.feet != null">Height: {{statistics.feet}}' {{statistics.inches}}"<br /></span>
             <span ng-if="statistics.weight != null">Weight: {{statistics.weight}}<br /></span>
@@ -27,7 +29,7 @@
             <span ng-if="statistics.notes != null">Notes: {{statistics.notes}}</span>
         </p>
 
-        <h5><a href="#visitsList/{{familyMemberID}}">Doctors Visits & Hospitalizations</a></h5>
+        <h4><a href="#visitsList/{{familyMemberID}}">Doctors Visits & Hospitalizations</a></h4>
         <div ng-repeat="visit in visits | orderBy:'-visit_date'">
             <p><strong>Visit Date: {{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />

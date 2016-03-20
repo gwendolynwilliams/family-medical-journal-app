@@ -49,58 +49,75 @@
     font-style: normal;
 }
 
+
+
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-
-h1 {
-    font-family: bebas_neue_book;
-    letter-spacing: .7px;
+body {
+    background-color: #FFFAF4;
 }
 
-h2 {
+h1 {
     font-family: bebas_neue_book;
     letter-spacing: .7px;
     margin-bottom: 0;
     color: #e3eafe;
 }
 
-h3 {
+h2 {
     font-family: bebas_neue_book;
     letter-spacing: .7px;
     text-align: left;
+    margin-bottom: 0px;
+    margin-top: 3px;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: .7px;
+    text-align: left;
+    margin-bottom: 0px;
+    color: #ED8C72;
 }
 
 h4 {
-    font-family: bebas_neue_book;
+    font-family: 'Montserrat', sans-serif;
     letter-spacing: .7px;
     text-align: left;
+    margin-bottom: 0px;
+    color: #ED8C72;
 }
 
 h5 {
-    font-family: bebas_neue_book;
-    letter-spacing: .7px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: .4px;
     text-align: left;
+    margin-bottom: 0px;
 }
 
 h6 {
-    font-family: bebas_neue_book;
+    font-family: 'Montserrat', sans-serif;
     letter-spacing: .7px;
-    text-align: center;
-    margin: 0 auto;
 }
 
-button {
-    margin-top: 15px;
+a {
+    color: #2982b5;
+    text-decoration: none;
 }
+
 
 /* Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .header {
-    padding-top: 5px;
-    padding-left: 13px;
-    padding-bottom: 5px;
+    padding-top: 7px;
+    padding-left: 16px;
+    padding-bottom: 7px;
     background-color: #235473;
+}
+
+.container {
+    margin-top: 50px;
 }
 
 .nav-container {
@@ -128,11 +145,32 @@ button {
 }
 
 .nav ul li a:hover {
-    color: cadetblue;
+    color: #2988BC;
 }
 
 .nav ul li a:active {
-    color: cadetblue;
+    color: #2988BC;
 }
+
+.grey {
+    color: #5e5e5e;
+}
+
+.bottom-space {
+    margin-bottom: 30px;
+}
+
+.top-space {
+    margin-top: 30px;
+}
+
+.button {
+    background-color: #ffffff;
+}
+
+.spacer {
+    margin: 0 1rem 0 1rem;
+}
+
 
 

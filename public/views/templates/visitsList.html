@@ -1,7 +1,7 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h4>Doctors Visits & Hospitalizations for {{family_member_first_name}} {{family_member_last_name}}</h4>
+        <h3>Doctors Visits & Hospitalizations for {{family_member_first_name}} {{family_member_last_name}}</h3>
         <p ng-show="deleted">Visit deleted!</p>
         <p ng-show="edited">Visit edited!</p>
 
@@ -35,11 +35,14 @@
                 <label for="notes">Notes: </label>
                 <textarea class="u-full-width" ng-model="form_notes" id="notes"></textarea>
 
-                <p><button ng-click="editVisit(visit_id)">Edit Visit</button></p>
+                <p><button ng-click="editVisit(visit_id)" class="button">Edit Visit</button></p>
             </form>
         </div>
 
         <div ng-show="showVisits">
+
+            <p><a href="#visits"><button class="button top-space">Add a New Visit</button></a></p>
+
             <div ng-repeat="visit in visits">
                 <p><strong>{{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />
@@ -50,8 +53,6 @@
                 Notes: {{visit.notes}}<br />
                 <a href="" ng-click="visitToForm(visit.visit_id)">Edit Visit</a> | <a href="" ng-click="deleteVisit(visit.visit_id)">Delete Visit</a></p>
             </div>
-
-            <p><a href="#visits"><button>Add a New Visit</button></a></p>
 
         </div>
     </div>
