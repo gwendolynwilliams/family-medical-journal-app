@@ -219,6 +219,54 @@ footer {
     margin-right: 7px;
 }
 
+.splash {
+    background-image: url("/views/images/beach.jpg");
+    /*background-position: center center;*/
+    background-size: 100% 100%;
+}
+
+.splash-box {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    border: 8px #ffffff solid;
+    width: 30%;
+    height: 15%;
+    padding: 5% 5%;
+}
+
+.splash-type {
+    font-size: 4em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.splash-login {
+    position: fixed;
+    top: 55%;
+    left: 45%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+
+}
+
+.float-left {
+    float: left;
+    margin-left: 5em;
+}
+
+.splash-login-type {
+    font-family: bebas_neue_book;
+    font-size: 2.8rem;
+    color: #8c8c8c;
+}
+
+.white {
+    color: #ffffff;
+}
+
 
 
 /* for handhelds */

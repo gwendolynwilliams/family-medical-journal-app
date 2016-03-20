@@ -12,6 +12,7 @@
 
         <p ng-show="deleted">deleted!</p>
 
+<div class="bottom-space">
         <h4><a href="#medicationsList/{{familyMemberID}}">Medications</a></h4>
 
         <div ng-repeat="medication in medications | orderBy:'+medication_name'">
@@ -20,7 +21,8 @@
                 Date Started: {{medication.date_started | date}}<br />
             </p>
         </div>
-
+</div>
+<div class="bottom-space">
         <h4><a href="#statisticsList/{{familyMemberID}}">Statistics</a></h4>
 
             <span ng-if="statistics.feet != null">Height: {{statistics.feet}}' {{statistics.inches}}"<br /></span>
@@ -32,36 +34,35 @@
             <span ng-if="statistics.blood_type != null"> Blood Type: {{statistics.blood_type}}<br /></span>
             <span ng-if="statistics.med_allergies != null">Medication Allergies: {{statistics.med_allergies}}<br /></span>
             <span ng-if="statistics.notes != null">Notes: {{statistics.notes}}</span>
-            <span ng-if="statistics != null"><br /><br /></span>
-
+            <!--<span ng-if="statistics != null"><br /></span>-->
+</div>
+<div class="bottom-space">
         <h4><a href="#visitsList/{{familyMemberID}}">Doctors Visits & Hospitalizations</a></h4>
         <div ng-repeat="visit in visits | orderBy:'-visit_date'">
-            <p><strong>Visit Date: {{visit.visit_date | date}}</strong><br />
+            <p><strong>{{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />
                 Reason: {{visit.reason | date}}<br />
             </p>
         </div>
-
+</div>
+<div class="bottom-space">
         <h4><a href="#immunizationsList/{{familyMemberID}}">Immunizations</a></h4>
 
         <div ng-repeat="immunization in immunizations | orderBy:'+immunization_name'">
-            <p><strong>{{immunization.immunization_name}}</strong><br />
-                Date: {{immunization.date_administered | date}}<br />
-            </p>
+            {{immunization.immunization_name}}: {{immunization.date_administered | date}}<br />
         </div>
-        <span ng-if="immunizations === null"><br /><br /></span>
+</div>
+        <!--<span ng-if="immunization.immunization_name == null"><br /></span>-->
+<div class="bottom-space">
+            <h4><a href="#symptomsList/{{familyMemberID}}">Symptoms</a></h4>
 
-        <h4><a href="#symptomsList/{{familyMemberID}}">Symptoms</a></h4>
+            <div ng-repeat="symptom in symptoms | orderBy:'+symptom_name'">
+                {{symptom.symptom_date | date}}: {{symptom.symptom_name}}<br />
+            </div>
+</div>
+        <!--<span ng-if="symptom.symptom_name == null"><br /></span>-->
 
-        <div ng-repeat="symptom in symptoms | orderBy:'+symptom_name'">
-            <p><strong>Date: {{symptom.date_administered | date}}</strong><br />
-                {{symptom.symptom_name}}<br />
-            </p>
-        </div>
-
-        <span ng-if="symptom.symptom_name == null"><br /></span>
-
-        <p><button ng-click="deleteFamilyMember(familyMemberID)" class="button">Delete Family Member</button>
+        <p><button ng-click="deleteFamilyMember(familyMemberID)" class="button top-space">Delete Family Member</button>
 
     </div>
 </div>
