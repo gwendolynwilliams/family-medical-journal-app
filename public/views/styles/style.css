@@ -110,6 +110,13 @@ input[type=submit] {
     background: #ffffff;
 }
 
+footer {
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
 
 /* Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -188,7 +195,10 @@ input[type=submit] {
 .nav-icon {
     float: right;
     margin-top: 10px;
+    margin-right: 7px;
 }
+
+
 
 /* for handhelds */
 @media (max-width: 450px) {
