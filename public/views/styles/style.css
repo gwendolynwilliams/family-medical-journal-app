@@ -234,11 +234,11 @@ footer {
     border: 8px #ffffff solid;
     width: 30%;
     height: 15%;
-    padding: 5% 5%;
+    padding: 3em 4em 5.5em 4em;
 }
 
 .splash-type {
-    font-size: 4em;
+    font-size: 5vw;
     color: #ffffff;
     text-align: center;
 }
@@ -246,7 +246,7 @@ footer {
 .splash-login {
     position: fixed;
     top: 55%;
-    left: 45%;
+    left: 43%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
 
@@ -259,7 +259,7 @@ footer {
 
 .splash-login-type {
     font-family: bebas_neue_book;
-    font-size: 2.8rem;
+    font-size: 2.5vw;
     color: #8c8c8c;
 }
 
