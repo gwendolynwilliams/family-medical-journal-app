@@ -113,6 +113,7 @@ input[type=submit] {
 
 /* Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .header {
     padding-top: 7px;
     padding-left: 16px;
@@ -145,15 +146,19 @@ input[type=submit] {
 .nav ul li a {
     padding: 30px;
     text-decoration: none;
-    color: #e3eafe;
+    color: #e4ebff;
 }
 
 .nav ul li a:hover {
-    color: #2988BC;
+    color: #29a4da;
 }
 
 .nav ul li a:active {
     color: #2988BC;
+}
+
+.nav-header {
+    color: #e4ebff;
 }
 
 .grey {
@@ -180,11 +185,23 @@ input[type=submit] {
     margin-bottom: 0px;
 }
 
+.nav-icon {
+    float: right;
+    margin-top: 10px;
+}
+
+/* for handhelds */
 @media (max-width: 450px) {
     .nav {
         display: none;
     }
 }
 
+/* for larger than handhelds */
+@media (min-width: 450px) {
+    .nav-icon {
+        display: none;
+    }
+}
 
 
