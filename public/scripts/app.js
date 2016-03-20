@@ -15,6 +15,14 @@ myApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: '/views/templates/medicationsList.html',
             controller: 'MedicationsListController'
         })
+        .when('/immunizations', {
+            templateUrl: '/views/templates/immunizations.html',
+            controller: 'ImmunizationsController'
+        })
+        .when('/immunizationsList/:id', {
+            templateUrl: '/views/templates/immunizationsList.html',
+            controller: 'ImmunizationsListController'
+        })
         .when('/statistics', {
             templateUrl: '/views/templates/statistics.html',
             controller: 'StatisticsController'

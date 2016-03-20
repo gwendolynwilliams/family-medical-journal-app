@@ -57,6 +57,26 @@ router.post('/medication', function(req, res) {
     });
 });
 
+router.post('/immunization', function(req, res) {
+
+    var results=[];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('INSERT INTO immunizations (immunization_name, family_member_id, date_administered, notes) ' +
+            'VALUES ($1, $2, $3, $4);',
+            [req.body.immunization_name, req.body.family_member_id, req.body.date_administered, req.body.notes],
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error inserting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+    });
+});
+
 router.post('/visit', function(req, res) {
 
     var results=[];
@@ -194,6 +214,63 @@ router.get('/medication/*', function(req, res) {
     pg.connect(connection, function(err, client, done) {
         var query = client.query('SELECT * FROM medications ' +
             'WHERE medication_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/immunizations/*', isAuthorized, function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM immunizations ' +
+            'JOIN family_members ON family_members.family_member_id = immunizations.family_member_id ' +
+            'WHERE family_members.family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/immunization/*', function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM immunizations ' +
+            'WHERE immunization_id = $1;',
             [id]);
 
         //Stream results back one row at a time
@@ -365,6 +442,33 @@ router.put('/medication/*', function(req, res) {
     });
 });
 
+router.put('/immunization/*', function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function (err, client, done) {
+        client.query('UPDATE immunizations ' +
+            'SET immunization_name = $1, ' +
+            'date_administered = $2, ' +
+            'notes = $3 ' +
+            'WHERE immunization_id = $4;',
+            [req.body.immunization_name, req.body.date_administered, req.body.notes, id],
+
+            function (err, result) {
+                done();
+
+                if (err) {
+                    console.log("Error inserting data: ", err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+
+            });
+    });
+});
+
 router.put('/statistic/*', function(req, res) {
 
     var id = req.params[0];
@@ -435,6 +539,28 @@ router.delete('/medication/*', function(req, res) {
 
     pg.connect(connection, function(err, client, done) {
         client.query('DELETE FROM medications WHERE medication_id = ($1);',
+            [id],
+
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error deleting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+
+    });
+});
+
+router.delete('/immunization/*', function(req, res) {
+    var results = [];
+
+    var id = req.params[0];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('DELETE FROM immunizations WHERE immunization_id = ($1);',
             [id],
 
             function(err, results) {

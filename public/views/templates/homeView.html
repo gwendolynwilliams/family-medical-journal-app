@@ -5,9 +5,12 @@
 
         <div ng-repeat="familyMember in familyMembers" ng-model="factoryRetrieveFamilyMember">
             <h4><a href="#familyMember/{{familyMember.family_member_id}}">{{familyMember.first_name}} {{familyMember.last_name}}</a></h4>
-            <p><a href="#medicationsList/{{familyMember.family_member_id}}" class="grey">Medications</a> <span class="spacer">|</span>
-                <a href="#statisticsList/{{familyMember.family_member_id}}" class="grey">Statistics</a> <span class="spacer">|</span>
-                <a href="#visitsList/{{familyMember.family_member_id}}" class="grey">Doctors Visits & Hospitalizations</a></p>
+            <p><a href="#medicationsList/{{familyMember.family_member_id}}" class="grey">Medications</a><br />
+                <a href="#statisticsList/{{familyMember.family_member_id}}" class="grey">Statistics</a><br />
+                <a href="#visitsList/{{familyMember.family_member_id}}" class="grey">Doctors Visits & Hospitalizations</a><br />
+                <a href="#immunizationsList/{{familyMember.family_member_id}}" class="grey">Immunizations</a><br />
+                <!--<a href="#symptomsList/{{familyMember.family_member_id}}" class="grey">Symptoms</a><span class="spacer">|</span>-->
+            </p>
         </div>
         <a href="#addFamily/{{user_id}}"><button class="button">Add Family Member</button></a>
 

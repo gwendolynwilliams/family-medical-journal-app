@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="offset-by-one ten columns">
+
+        <h3 class="u-full-width">Immunizations for {{family_member_first_name}} {{family_member_last_name}}</h3>
+        <p ng-show="deleted">Immunization deleted!</p>
+        <p ng-show="edited">Immunization edited!</p>
+
+        <div ng-show="showForm">
+            <form name="immunizations">
+                <label for="immunization_name">Immunization: </label>
+                <input class="u-full-width" type="text" ng-model="form_immunization_name" id="immunization_name" required />
+
+                <label for="date_administered">Date Given: </label>
+                <input type="date" ng-model="form_date_administered" id="date_administered" />
+
+                <label for="notes">Notes: </label>
+                <textarea class="u-full-width" ng-model="form_notes" id="notes"></textarea>
+
+                <p><button ng-click="editImmunization(immunization_id)" class="button">Edit Immunization</button></p>
+            </form>
+        </div>
+
+        <div ng-show="showList">
+            <div ng-repeat="immunization in immunizations">
+                <p>
+                    <strong>{{immunization.immunization_name}}</strong><br />
+                    Date Given: {{immunization.date_administered | date}}<br />
+                    Notes: {{immunization.notes}}<br />
+                    <!--Id: {{immunization.immunization_id}}-->
+                    <a href="" ng-click="immunizationToForm(immunization.immunization_id)">Edit Immunization</a> |
+                    <a href="" ng-click="deleteImmunization(immunization.immunization_id)">Delete Immunization</a>
+                </p>
+            </div>
+            <p><a href="#immunizations"><button class="button">Add a New Immunization</button></a></p>
+        </div>
+
+    </div>
+</div>
