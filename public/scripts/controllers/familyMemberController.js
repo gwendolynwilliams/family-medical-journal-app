@@ -4,6 +4,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
     $scope.dataFactory = DataFactory;
     $scope.familyMember = false;
     $scope.medications = [];
+    $scope.immunizations = [];
     $scope.familyMembers = [];
     $scope.user_name = '';
     $scope.family_member_first_name = '';
@@ -15,6 +16,8 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
     showMedications($scope.familyMemberID);
     showStatistics($scope.familyMemberID);
     showVisits($scope.familyMemberID);
+    showSymptoms($scope.familyMemberID);
+    showImmunizations($scope.familyMemberID);
 
     function retrieveFamilyMember(id) {
         $http.get('/familyMember/' + id).then(function(response) {
@@ -79,6 +82,34 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
         $http.get('/visits/' + id).then(function(response) {
             if(response.data) {
                 $scope.visits = response.data;
+            } else {
+                console.log('failed to get user route');
+                $window.location.href = '/index.html';
+            }
+        }, function(response) {
+            $location.path('/unauthorized');
+        });
+    }
+
+    function showImmunizations(id) {
+
+        $http.get('/immunizations/' + id).then(function(response) {
+            if(response.data) {
+                $scope.immunizations = response.data;
+            } else {
+                console.log('failed to get user route');
+                $window.location.href = '/index.html';
+            }
+        }, function(response) {
+            $location.path('/unauthorized');
+        });
+    }
+
+    function showSymptoms(id) {
+
+        $http.get('/symptoms/' + id).then(function(response) {
+            if(response.data) {
+                $scope.symptoms = response.data;
             } else {
                 console.log('failed to get user route');
                 $window.location.href = '/index.html';

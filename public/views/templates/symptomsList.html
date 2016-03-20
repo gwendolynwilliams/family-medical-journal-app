@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="offset-by-one ten columns">
+
+        <h3>{{family_member_first_name}} {{family_member_last_name}}</h3>
+        <h5>Symptoms</h5>
+        <p ng-show="deleted">Symptom deleted!</p>
+        <p ng-show="edited">Symptom edited!</p>
+
+        <div ng-show="showForm">
+            <form>
+                <label for="symptom_name">Symptom:</label>
+                <input class="u-full-width" type="text" ng-model="form_symptom_name" id="symptom_name" />
+
+                <label for="symptom_date">Date: </label>
+                <input type="date" ng-model="form_symptom_date" id="symptom_date" />
+
+                <label for="treatment">Treatment:</label>
+                <input class="u-full-width" type="text" ng-model="form_treatment" id="treatment" />
+
+                <label for="notes">Notes: </label>
+                <textarea class="u-full-width" ng-model="form_notes" id="notes"></textarea>
+
+                <p><button ng-click="editSymptom(symptom_id)" class="button">Edit Symptom</button></p>
+            </form>
+        </div>
+
+        <div ng-show="showList">
+
+            <div ng-repeat="symptom in symptoms">
+                <p><strong>{{symptom.symptom_date | date}}</strong><br />
+                    Symptom: {{symptom.symptom_name}}<br />
+                    Treatment: {{symptom.treatment}}<br />
+                    Notes: {{symptom.notes}}<br />
+                    <a href="" ng-click="symptomToForm(symptom.symptom_id)">Edit Symptom</a> | <a href="" ng-click="deleteSymptom(symptom.symptom_id)">Delete Symptom</a></p>
+            </div>
+
+            <p><a href="#symptoms"><button class="button top-space">Add a New Symptom</button></a></p>
+
+        </div>
+    </div>
+</div>

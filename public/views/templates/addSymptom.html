@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="offset-by-three six columns">
+
+        <h4 class="u-full-width">Add Symptom</h4>
+
+        <form>
+            <label for="family_member">Family Member:</label>
+            <select id="family_member" ng-model="selectedFamilyMemberID" ng-options="family_member.family_member_id as family_member.first_name for family_member in familyMembers"></select>
+
+            <label for="symptom_name">Symptom: </label>
+            <input class="u-full-width" type="text" ng-model="symptom_name" id="symptom_name" />
+
+            <label for="symptom_date">Date: </label>
+            <input type="date" ng-model="symptom_date" id="symptom_date" />
+
+            <label for="treatment">Treatment:</label>
+            <input class="u-full-width" type="text" ng-model="treatment" id="treatment" />
+
+            <label for="notes">Notes: </label>
+            <textarea class="u-full-width" ng-model="notes" id="notes"></textarea>
+
+            <p><button ng-click="postSymptom()" class="button">Add Symptom</button></p>
+            <p ng-show="symptom">{{symptom}} visit added!</p>
+        </form>
+    </div>
+</div>

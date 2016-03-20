@@ -2,9 +2,13 @@
     <div class="offset-by-one ten columns">
 
         <h3 class="u-full-width no-bottom-marg"> {{family_member_first_name}} {{family_member_last_name}}</h3>
-        <p><a href="#medicationsList/{{familyMemberID}}" class="grey">Medications</a> <span class="spacer">|</span>
-            <a href="#statisticsList/{{familyMemberID}}" class="grey">Statistics</a> <span class="spacer">|</span>
-            <a href="#visitsList/{{familyMemberID}}" class="grey">Doctors Visits & Hospitalizations</a></p>
+        <p>
+            <a href="#medicationsList/{{familyMemberID}}" class="grey">Medications</a><span class="spacer">|</span>
+            <a href="#statisticsList/{{familyMemberID}}" class="grey">Statistics</a><span class="spacer">|</span>
+            <a href="#visitsList/{{familyMemberID}}" class="grey">Visits</a><span class="spacer">|</span>
+            <a href="#symptomsList/{{familyMemberID}}" class="grey">Symptoms</a><span class="spacer">|</span>
+            <a href="#immunizationsList/{{familyMemberID}}" class="grey">Immunizations</a>
+        </p>
 
         <p ng-show="deleted">deleted!</p>
 
@@ -12,12 +16,13 @@
 
         <div ng-repeat="medication in medications | orderBy:'+medication_name'">
             <p><strong>{{medication.medication_name}}</strong><br />
-            Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
-            Date Started: {{medication.date_started | date}}<br /></p>
+                Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
+                Date Started: {{medication.date_started | date}}<br />
+            </p>
         </div>
 
         <h4><a href="#statisticsList/{{familyMemberID}}">Statistics</a></h4>
-        <p>
+
             <span ng-if="statistics.feet != null">Height: {{statistics.feet}}' {{statistics.inches}}"<br /></span>
             <span ng-if="statistics.weight != null">Weight: {{statistics.weight}}<br /></span>
             <span ng-if="statistics.date_of_birth != null">Date of Birth: {{statistics.date_of_birth | date}}<br /></span>
@@ -27,14 +32,34 @@
             <span ng-if="statistics.blood_type != null"> Blood Type: {{statistics.blood_type}}<br /></span>
             <span ng-if="statistics.med_allergies != null">Medication Allergies: {{statistics.med_allergies}}<br /></span>
             <span ng-if="statistics.notes != null">Notes: {{statistics.notes}}</span>
-        </p>
+            <span ng-if="statistics != null"><br /><br /></span>
 
         <h4><a href="#visitsList/{{familyMemberID}}">Doctors Visits & Hospitalizations</a></h4>
         <div ng-repeat="visit in visits | orderBy:'-visit_date'">
             <p><strong>Visit Date: {{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />
-                Reason: {{visit.reason | date}}<br /></p>
+                Reason: {{visit.reason | date}}<br />
+            </p>
         </div>
+
+        <h4><a href="#immunizationsList/{{familyMemberID}}">Immunizations</a></h4>
+
+        <div ng-repeat="immunization in immunizations | orderBy:'+immunization_name'">
+            <p><strong>{{immunization.immunization_name}}</strong><br />
+                Date: {{immunization.date_administered | date}}<br />
+            </p>
+        </div>
+        <span ng-if="immunizations === null"><br /><br /></span>
+
+        <h4><a href="#symptomsList/{{familyMemberID}}">Symptoms</a></h4>
+
+        <div ng-repeat="symptom in symptoms | orderBy:'+symptom_name'">
+            <p><strong>Date: {{symptom.date_administered | date}}</strong><br />
+                {{symptom.symptom_name}}<br />
+            </p>
+        </div>
+
+        <span ng-if="symptom.symptom_name == null"><br /></span>
 
         <p><button ng-click="deleteFamilyMember(familyMemberID)" class="button">Delete Family Member</button>
 

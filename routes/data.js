@@ -98,6 +98,26 @@ router.post('/visit', function(req, res) {
     });
 });
 
+router.post('/symptom', function(req, res) {
+
+    var results=[];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('INSERT INTO symptoms (family_member_id, symptom_name, symptom_date, treatment, notes) ' +
+            'VALUES ($1, $2, $3, $4, $5);',
+            [req.body.family_member_id, req.body.symptom_name, req.body.symptom_date, req.body.treatment, req.body.notes],
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error inserting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+    });
+});
+
 router.post('/statistic', function(req, res) {
 
     var results=[];
@@ -377,6 +397,63 @@ router.get('/visit/*', function(req, res) {
     });
 });
 
+router.get('/symptoms/*', isAuthorized, function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM symptoms ' +
+            'JOIN family_members ON family_members.family_member_id = symptoms.family_member_id ' +
+            'WHERE family_members.family_member_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
+router.get('/symptom/*', function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function(err, client, done) {
+        var query = client.query('SELECT * FROM symptoms ' +
+            'WHERE symptom_id = $1;',
+            [id]);
+
+        //Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        //close connection
+        query.on('end', function() {
+            done();
+            return res.json(results);
+        });
+
+        if(err) {
+            console.log(err);
+        }
+
+    });
+});
+
 router.put('/visit/*', function(req, res) {
 
     var id = req.params[0];
@@ -406,6 +483,34 @@ router.put('/visit/*', function(req, res) {
             }
 
         });
+    });
+});
+
+router.put('/symptom/*', function(req, res) {
+
+    var id = req.params[0];
+    var results = [];
+
+    pg.connect(connection, function (err, client, done) {
+        client.query('UPDATE symptoms ' +
+            'SET symptom_name = $1, ' +
+            'symptom_date = $2, ' +
+            'treatment = $3, ' +
+            'notes = $4 ' +
+            'WHERE symptom_id = $5;',
+            [req.body.symptom_name, req.body.symptom_date, req.body.treatment, req.body.notes, id],
+
+            function (err, result) {
+                done();
+
+                if (err) {
+                    console.log("Error inserting data: ", err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+
+            });
     });
 });
 
@@ -472,7 +577,9 @@ router.put('/immunization/*', function(req, res) {
 router.put('/statistic/*', function(req, res) {
 
     var id = req.params[0];
+    console.log('id: ', id);
     var results = [];
+    console.log('req.body: ', req.body);
 
     pg.connect(connection, function (err, client, done) {
         client.query('UPDATE statistics ' +
@@ -503,6 +610,7 @@ router.put('/statistic/*', function(req, res) {
                     console.log("Error inserting data: ", err);
                     res.send(false);
                 } else {
+                    console.log("succeeded");
                     res.send(results);
                 }
 
@@ -583,6 +691,28 @@ router.delete('/visit/*', function(req, res) {
 
     pg.connect(connection, function(err, client, done) {
         client.query('DELETE FROM visits WHERE visit_id = ($1);',
+            [id],
+
+            function(err, results) {
+                done();
+                if(err) {
+                    console.log('Error deleting data: ', err);
+                    res.send(false);
+                } else {
+                    res.send(results);
+                }
+            });
+
+    });
+});
+
+router.delete('/symptom/*', function(req, res) {
+    var results = [];
+
+    var id = req.params[0];
+
+    pg.connect(connection, function(err, client, done) {
+        client.query('DELETE FROM symptoms WHERE symptom_id = ($1);',
             [id],
 
             function(err, results) {

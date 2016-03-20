@@ -8,7 +8,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'HomeViewController'
         })
         .when('/medications', {
-            templateUrl: '/views/templates/medications.html',
+            templateUrl: '/views/templates/addMedication.html',
             controller: 'MedicationsController'
         })
         .when('/medicationsList/:id', {
@@ -16,15 +16,23 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'MedicationsListController'
         })
         .when('/immunizations', {
-            templateUrl: '/views/templates/immunizations.html',
+            templateUrl: '/views/templates/addImmunization.html',
             controller: 'ImmunizationsController'
         })
         .when('/immunizationsList/:id', {
             templateUrl: '/views/templates/immunizationsList.html',
             controller: 'ImmunizationsListController'
         })
+        .when('/symptoms', {
+            templateUrl: '/views/templates/addSymptom.html',
+            controller: 'SymptomsController'
+        })
+        .when('/symptomsList/:id', {
+            templateUrl: '/views/templates/symptomsList.html',
+            controller: 'SymptomsListController'
+        })
         .when('/statistics', {
-            templateUrl: '/views/templates/statistics.html',
+            templateUrl: '/views/templates/addStatistics.html',
             controller: 'StatisticsController'
         })
         .when('/statisticsList/:id', {
@@ -32,7 +40,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'StatisticsListController'
         })
         .when('/visits', {
-            templateUrl: '/views/templates/visits.html',
+            templateUrl: '/views/templates/addVisit.html',
             controller: 'VisitsController'
         })
         .when('/visitsList/:id', {
