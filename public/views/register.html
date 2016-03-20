@@ -11,20 +11,22 @@
     <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway|Montserrat' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/views/styles/normalize.css" />
     <link rel="stylesheet" href="/views/styles/skeleton.css" />
     <link rel="stylesheet" href="/views/styles/style.css" />
 </head>
 <body ng-app="myApp">
-<h2>Family Medical Journal</h2>
+<div class="header">
+    <h1>Family Medical Journal</h1>
+</div>
 
 <div class="container">
 
     <div class="row">
         <div class="offset-by-three six columns">
 
-            <h4>Register</h4>
+            <h3 class="bottom-space">Register</h3>
 
             <form action="/register" method="post">
                 <label for="username">username: </label>
@@ -39,7 +41,7 @@
                 <label for="last_name">Last Name: </label>
                 <input class="u-full-width" type="text" name="last_name" id="last_name" />
 
-                <input type="submit" value="Register" />
+                <input type="submit" value="Register" class="button"/>
                 <p ng-show="userLoggedIn">Welcome {{user}}! You are now registered!</p>
             </form>
         </div>

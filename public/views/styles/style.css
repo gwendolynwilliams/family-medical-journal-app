@@ -55,7 +55,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 body {
-    background-color: #FFFAF4;
+    background-color: #e5eef2;
 }
 
 h1 {
@@ -77,7 +77,7 @@ h3 {
     font-family: 'Montserrat', sans-serif;
     letter-spacing: .7px;
     text-align: left;
-    margin-bottom: 0px;
+    margin-bottom:25px;
     color: #ED8C72;
 }
 
@@ -104,6 +104,10 @@ h6 {
 a {
     color: #2982b5;
     text-decoration: none;
+}
+
+input[type=submit] {
+    background: #ffffff;
 }
 
 
@@ -170,6 +174,16 @@ a {
 
 .spacer {
     margin: 0 1rem 0 1rem;
+}
+
+.no-bottom-marg {
+    margin-bottom: 0px;
+}
+
+@media (max-width: 450px) {
+    .nav {
+        display: none;
+    }
 }
 
 
