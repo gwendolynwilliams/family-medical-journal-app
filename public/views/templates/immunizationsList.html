@@ -27,7 +27,6 @@
                     <strong>{{immunization.immunization_name}}</strong><br />
                     {{immunization.date_administered | date}}<br />
                     Notes: {{immunization.notes}}<br />
-                    <!--Id: {{immunization.immunization_id}}-->
                     <a href="" ng-click="immunizationToForm(immunization.immunization_id)">Edit Immunization</a> |
                     <a href="" ng-click="deleteImmunization(immunization.immunization_id)">Delete Immunization</a>
                 </p>
