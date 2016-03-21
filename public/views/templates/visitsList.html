@@ -42,7 +42,7 @@
 
         <div ng-show="showVisits">
 
-            <div ng-repeat="visit in visits">
+            <div ng-repeat="visit in visits | orderBy:'-visit_date'">
                 <p><strong>{{visit.visit_date | date}}</strong><br />
                 Location: {{visit.location}}<br />
                 Visit Type: {{visit.visit_type}}<br />

@@ -37,7 +37,7 @@
         </div>
 
         <div ng-show="showMeds">
-            <div ng-repeat="medication in medications">
+            <div ng-repeat="medication in medications | orderBy:'+medication_name'">
                 <p>
                     <strong>{{medication.medication_name}}</strong><br />
                     Dosage: {{medication.dosage}}, {{medication.frequency}}<br />
@@ -46,7 +46,6 @@
                     Prescribing Physician: {{medication.physician}}<br />
                     Reason for Medication: {{medication.reason}}<br />
                     Notes: {{medication.notes}}<br />
-                    Id: {{medication.medication_id}}
                     <a href="" ng-click="medToForm(medication.medication_id)">Edit Medication</a> |
                         <a href="" ng-click="deleteMed(medication.medication_id)">Delete Medication</a>
                 </p>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Family Medical Journal</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Family Medical Journal">
+    <meta name="author" content="Gwendolyn Williams">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/indexController.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway|Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/views/styles/normalize.css" />
+    <link rel="stylesheet" href="/views/styles/skeleton.css" />
+    <link rel="stylesheet" href="/views/styles/style.css" />
+
+    <link rel="shortcut icon" href="/views/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/views/images/favicon.ico" type="image/x-icon">
+</head>
+<body ng-app="myApp" ng-controller="IndexController">
+
+<div class="wrapper">
+    <div class="header">
+        <h1>Family Medical Journal</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="offset-by-three six columns">
+
+                <h3>Log In</h3>
+
+                <p>{{loggedOut}}</p>
+
+                <form action="/login" method="post">
+                    <label for="username">username: </label>
+                    <input class="u-full-width" type="text" name="username" ng-model="username" id="username" />
+
+                    <label for="password">password: </label>
+                    <input class="u-full-width" type="password" name="password" ng-model="password" id="password" />
+
+                    <p><input type="submit" value="Log In" /></p>
+                    <p><a href="register.html">Register as a new user</a><span class="spacer">|</span><a href="" ng-click="logout()">Sign Out</a></p>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="push"></div>
+
+<div class="footer">
+    <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
+</div>
+
+</body>
+</html>

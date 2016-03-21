@@ -26,7 +26,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.family_member_last_name = response.data[0].last_name;
             } else {
                 console.log('failed to get familyMember route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -56,7 +56,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.medications = response.data;
             } else {
                 console.log('failed to get user route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -70,7 +70,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.statistics = response.data[0];
             } else {
                 console.log('failed to get user route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -84,7 +84,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.visits = response.data;
             } else {
                 console.log('failed to get user route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -98,7 +98,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.immunizations = response.data;
             } else {
                 console.log('failed to get user route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -112,7 +112,7 @@ myApp.controller('FamilyMemberController', ['$scope', '$http', '$window', '$loca
                 $scope.symptoms = response.data;
             } else {
                 console.log('failed to get user route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');

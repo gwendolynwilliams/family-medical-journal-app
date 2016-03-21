@@ -26,7 +26,7 @@
 
         <div ng-show="showList">
 
-            <div ng-repeat="symptom in symptoms">
+            <div ng-repeat="symptom in symptoms | orderBy:'-symptom_date'">
                 <p><strong>{{symptom.symptom_date | date}}</strong><br />
                     Symptom: {{symptom.symptom_name}}<br />
                     Treatment: {{symptom.treatment}}<br />

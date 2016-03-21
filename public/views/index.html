@@ -10,54 +10,37 @@
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/controllers/indexController.js"></script>
+
 
     <link href='https://fonts.googleapis.com/css?family=Raleway|Montserrat' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/views/styles/normalize.css" />
     <link rel="stylesheet" href="/views/styles/skeleton.css" />
     <link rel="stylesheet" href="/views/styles/style.css" />
-
-    <link rel="shortcut icon" href="/views/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/views/images/favicon.ico" type="image/x-icon">
 </head>
-<body ng-app="myApp" ng-controller="IndexController">
+<body class="splash">
 
-<div class="wrapper">
-    <div class="header">
-        <h1>Family Medical Journal</h1>
+<!--<div class="wrapper">-->
+
+    <div class="splash-box">
+        <h1 class="splash-type">Family Medical Journal</h1>
     </div>
 
-    <div class="container">
-
-        <div class="row">
-            <div class="offset-by-three six columns">
-
-                <h3>Log In</h3>
-
-                <p>{{loggedOut}}</p>
-
-                <form action="/login" method="post">
-                    <label for="username">username: </label>
-                    <input class="u-full-width" type="text" name="username" ng-model="username" id="username" />
-
-                    <label for="password">password: </label>
-                    <input class="u-full-width" type="password" name="password" ng-model="password" id="password" />
-
-                    <p><input type="submit" value="Log In" /></p>
-                    <p><a href="register.html">Register as a new user</a><span class="spacer">|</span><a href="" ng-click="logout()">Sign Out</a></p>
-                </form>
-
-            </div>
-        </div>
-
-    </div>
+<div class="splash-login">
+    <p class="float-left splash-login-type"><a href="/login.html">Log In</a></p>
+    <p class="float-left splash-login-type"><a href="/register.html">Register</a></p>
 </div>
 
-<div class="push"></div>
 
-<div class="footer">
-    <p>&copy;Gwendolyn Williams | <a href="/index.html">Sign Out</a></p>
-</div>
+
+<!--</div>-->
+
+
+
+<!--<div class="push"></div>-->
+
+<!--<div class="footer white">-->
+    <!--<p>&copy;Gwendolyn Williams</p>-->
+<!--</div>-->
 
 </body>
 </html>

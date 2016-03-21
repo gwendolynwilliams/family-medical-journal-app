@@ -577,9 +577,9 @@ router.put('/immunization/*', function(req, res) {
 router.put('/statistic/*', function(req, res) {
 
     var id = req.params[0];
-    console.log('id: ', id);
+    //console.log('id: ', id);
     var results = [];
-    console.log('req.body: ', req.body);
+    //console.log('req.body: ', req.body);
 
     pg.connect(connection, function (err, client, done) {
         client.query('UPDATE statistics ' +
@@ -610,7 +610,7 @@ router.put('/statistic/*', function(req, res) {
                     console.log("Error inserting data: ", err);
                     res.send(false);
                 } else {
-                    console.log("succeeded");
+                    //console.log("succeeded");
                     res.send(results);
                 }
 

@@ -25,7 +25,7 @@
             <div ng-repeat="immunization in immunizations">
                 <p>
                     <strong>{{immunization.immunization_name}}</strong><br />
-                    Date Given: {{immunization.date_administered | date}}<br />
+                    {{immunization.date_administered | date}}<br />
                     Notes: {{immunization.notes}}<br />
                     <!--Id: {{immunization.immunization_id}}-->
                     <a href="" ng-click="immunizationToForm(immunization.immunization_id)">Edit Immunization</a> |

@@ -18,7 +18,7 @@ myApp.controller('SymptomsListController', ['$scope', '$http', '$window', '$loca
                 $scope.family_member_last_name = response.data[0].last_name;
             } else {
                 console.log('failed to get familyMember route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         }, function(response) {
             $location.path('/unauthorized');
@@ -35,7 +35,7 @@ myApp.controller('SymptomsListController', ['$scope', '$http', '$window', '$loca
             //commenting this out - is this bad practice?
             //else {
             //    console.log('failed to get user route');
-            //    $window.location.href = '/index.html';
+            //    $window.location.href = '/login.html';
             //}
         }, function(response) {
             $location.path('/unauthorized');
@@ -56,7 +56,7 @@ myApp.controller('SymptomsListController', ['$scope', '$http', '$window', '$loca
                 $scope.form_notes = $scope.symptom.notes;
             } else {
                 console.log('failed to get visit route');
-                $window.location.href = '/index.html';
+                $window.location.href = '/login.html';
             }
         });
     };
