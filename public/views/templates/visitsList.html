@@ -1,10 +1,10 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h3>{{family_member_first_name}} {{family_member_last_name}}</h3>
+        <h3><a href="#familyMember/{{familyMemberID}}" class="orange">{{family_member_first_name}} {{family_member_last_name}}</a></h3>
         <h5>Doctor's Visits and Hospitalizations</h5>
-        <p ng-show="deleted">Visit deleted!</p>
-        <p ng-show="edited">Visit edited!</p>
+        <p ng-show="deleted" class="alert">Visit deleted!</p>
+        <p ng-show="edited" class="alert">Visit edited!</p>
 
         <div ng-show="showForm">
             <form>

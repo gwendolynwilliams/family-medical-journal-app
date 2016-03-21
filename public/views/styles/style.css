@@ -82,7 +82,7 @@ h2 {
 }
 
 h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Merriweather', sans-serif;
     letter-spacing: .7px;
     text-align: left;
     margin-bottom:25px;
@@ -90,7 +90,7 @@ h3 {
 }
 
 h4 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Merriweather', sans-serif;
     letter-spacing: .7px;
     text-align: left;
     margin-bottom: 0px;
@@ -98,7 +98,7 @@ h4 {
 }
 
 h5 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Merriweather', sans-serif;
     letter-spacing: .4px;
     text-align: left;
     margin-bottom: 0px;
@@ -106,7 +106,7 @@ h5 {
 }
 
 h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Merriweather', sans-serif;
     letter-spacing: .7px;
 }
 
@@ -203,6 +203,10 @@ footer {
     color: #5e5e5e;
 }
 
+.alert {
+    color: #9a362a;
+}
+
 .bottom-space {
     margin-bottom: 30px;
 }
@@ -277,7 +281,9 @@ footer {
     color: #ffffff;
 }
 
-
+.orange {
+    color: #ED8C72;
+}
 
 /* for handhelds */
 @media (max-width: 450px) {

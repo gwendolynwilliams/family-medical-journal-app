@@ -1,10 +1,10 @@
 <div class="row">
     <div class="offset-by-one ten columns">
 
-        <h3 class="u-full-width">{{family_member_first_name}} {{family_member_last_name}}</h3>
+        <h3 class="u-full-width"><a href="#familyMember/{{familyMemberID}}" class="orange">{{family_member_first_name}} {{family_member_last_name}}</a></h3>
         <h5>Immunizations</h5>
-        <p ng-show="deleted">Immunization deleted!</p>
-        <p ng-show="edited">Immunization edited!</p>
+        <p ng-show="deleted" class="alert">Immunization deleted!</p>
+        <p ng-show="edited" class="alert">Immunization edited!</p>
 
         <div ng-show="showForm">
             <form name="immunizations">
@@ -22,7 +22,7 @@
         </div>
 
         <div ng-show="showList">
-            <div ng-repeat="immunization in immunizations">
+            <div ng-repeat="immunization in immunizations | orderBy:'-date_administered'">
                 <p>
                     <strong>{{immunization.immunization_name}}</strong><br />
                     {{immunization.date_administered | date}}<br />
