@@ -252,18 +252,8 @@ footer {
 }
 
 .splash-type {
-    font-size: 5vw;
     color: #ffffff;
     text-align: center;
-}
-
-.splash-login {
-    position: fixed;
-    top: 55%;
-    left: 43%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-
 }
 
 .float-left {
@@ -273,7 +263,6 @@ footer {
 
 .splash-login-type {
     font-family: bebas_neue_book;
-    font-size: 2.5em;
     color: #8c8c8c;
 }
 
@@ -290,6 +279,26 @@ footer {
     .nav {
         display: none;
     }
+
+    .splash-login-type {
+        font-size: 1.5em;
+    }
+
+    .splash-type {
+        font-size: 2.5em;
+    }
+
+    .splash-login {
+        position: fixed;
+        top: 65%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+    }
+
+    .float-left {
+        float: left;
+        margin-left: 1.5em;
+    }
 }
 
 /* for larger than handhelds */
@@ -297,6 +306,23 @@ footer {
     .nav-icon {
         display: none;
     }
+
+    .splash-login-type {
+        font-size: 2.5em;
+    }
+
+    .splash-type {
+        font-size: 4em;
+    }
+
+    .splash-login {
+        position: fixed;
+        top: 55%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+    }
+
+
 }
 
 
